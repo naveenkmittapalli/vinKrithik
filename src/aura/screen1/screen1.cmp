@@ -1,0 +1,439 @@
+<aura:component >
+    <!-- General Attributes -->
+    <aura:attribute name="yesNoOptions" type="List" default="[
+    {'label': 'Yes', 'value': 'Yes'},
+    {'label': 'No', 'value': 'No'}
+    ]"/>
+    
+    <!-- Page 1 Attributes -->
+    <aura:attribute name="p1q1options" type="List" default="[
+    {'label': 'Child Care Center', 'value': 'option1'},
+    {'label': 'Family Child Care Facility', 'value': 'option2'},
+    {'label': 'Out of School Program', 'value': 'option3'}
+    ]"/>
+    <aura:attribute name="p1q1value" type="String"/>
+    <aura:attribute name="pStatus" type="String" default = "Incomplete"/>
+    
+    <!-- Page 2 Attributes -->
+    <aura:attribute name="p2q1value" type="String"/>
+    <aura:attribute name="p2q2value" type="String"/>
+    <aura:attribute name="p2q3value" type="String"/>
+    <aura:attribute name="p2q4value" type="String"/>
+    <aura:attribute name="p2q5value" type="String"/>
+    <aura:attribute name="p2q6value" type="String"/>
+    <aura:attribute name="p2q7value" type="String"/>
+    <aura:attribute name="p2q8value" type="String"/>
+    <aura:attribute name="p2q9value" type="String"/>
+    <aura:attribute name="p2q10value" type="String"/>
+    <aura:attribute name="p2q11value" type="String"/>
+    <aura:attribute name="p2q12value" type="String"/>
+    <aura:attribute name="p2q13value" type="String"/>
+    <aura:attribute name="p2q14value" type="String"/>
+    <aura:attribute name="p2q15value" type="String"/>
+    <aura:attribute name="p2q16value" type="String"/>
+    <aura:attribute name="p2AddAddress" type="boolean" default= "false" />
+    <aura:attribute name="p2AddPhone" type="boolean" default= "false" />
+    
+    <!-- Page 3 Attributes -->
+    <aura:attribute name="p3q1value" type="String"/>
+    <aura:attribute name="p3q2value" type="String"/>
+    <aura:attribute name="p3q3value" type="String"/>
+    <aura:attribute name="p3q4value" type="String"/>
+    <aura:attribute name="p3q5value" type="String"/>
+    <aura:attribute name="p3q6value" type="String"/>
+    <aura:attribute name="p3q7value" type="String"/>
+    <aura:attribute name="p3q8value" type="String"/>
+    <aura:attribute name="p3q9value" type="String"/>
+    <aura:attribute name="p3q10value" type="String"/>
+    <aura:attribute name="p3q11value" type="String"/>
+    <aura:attribute name="p3q12value" type="String"/>
+    <aura:attribute name="p3q13value" type="String"/>
+    <aura:attribute name="p3q14value" type="String"/>
+    <aura:attribute name="p3q15value" type="String"/>
+    <aura:attribute name="p3q16value" type="String"/>
+    <aura:attribute name="p3AddAddress" type="boolean" default= "false" />
+    <aura:attribute name="p3AddPhone" type="boolean" default= "false" />
+    
+    <aura:attribute name="activeSections" type="List" default="['A', 'B', 'C']" />
+    
+    <!-- Next Event Registration -->
+    <aura:registerEvent name="screen1NextEvent" type="c:screen1NextEvent"/>
+    
+    <div class="slds-clearfix">
+                <div class="slds-float_right">
+    				<lightning:button value='one' label='Back' variant = 'brand' onclick="{!c.processBack}" />
+  				</div>
+                <br></br>
+        
+		<lightning:accordion aura:id="accordion" 
+                             allowMultipleSectionsOpen="true"
+        				     activeSectionName="{! v.activeSections }" >
+        <lightning:accordionSection name="A" label="Needs Assessment and Letter of Intent:" class="top">
+        <aura:set attribute="body">        
+      
+        <lightning:radioGroup name="radioGroup"
+                          label=""
+                          options="{!v.p1q1options}"
+                          value="{!v.p1q1value}"
+                          type="radio"/>                                 
+        </aura:set>
+        </lightning:accordionSection>
+        <lightning:accordionSection name="B" label="Owner / Operator Information:" class="top">
+        <aura:set attribute="body">
+        
+         
+    <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">
+		<div class="slds-grid  slds-gutters slds-p-left_large">
+			<div class="slds-col  slds-size_3-of-12 slds-p-left_large" >   
+       			<lightning:input name="input1" label="Address Line 1" value="{!v.p2q1value}"/>
+        		<lightning:input name="input2" label="Address Line 2" value="{!v.p2q2value}"/>
+        		<lightning:input name="input3" label="City" value="{!v.p2q3value}"/>
+  	   		</div>
+  
+			<div class="slds-col  slds-size_1-of-12">		
+			</div>
+           
+			<div class="slds-col  slds-size_2-of-12">   
+				<lightning:input name="input1" label="County" value="{!v.p2q4value}"/> 
+				<lightning:input name="input1" label="State" value="{!v.p2q5value}"/>
+				<lightning:input name="input1" label="Zip/Postal Code" value="{!v.p2q6value}"/>
+  			</div>
+           
+			<div class="slds-col  slds-size_4-of-8">	
+			</div>
+		</div>
+        
+   
+	<lightning:button name="Add Address" label="Add" onclick="{!c.p2AddAddressPhone}" />
+    <br></br>
+    <aura:if isTrue="{!v.p2AddAddress == true}">
+        <div class="slds-grid  slds-gutters slds-p-left_large">
+			<div class="slds-col  slds-size_3-of-12 slds-p-left_large" >   
+       			<lightning:input name="input1" label="Address Line 1" value="{!v.p2q7value}"/>
+        		<lightning:input name="input2" label="Address Line 2" value="{!v.p2q8value}"/>
+        		<lightning:input name="input3" label="City" value="{!v.p2q9value}"/>
+  	   		</div>
+  
+			<div class="slds-col  slds-size_1-of-12">		
+			</div>
+           
+			<div class="slds-col  slds-size_2-of-12">   
+				<lightning:input name="input1" label="County" value="{!v.p2q10value}"/> 
+				<lightning:input name="input1" label="State" value="{!v.p2q11value}"/>
+				<lightning:input name="input1" label="Zip/Postal Code" value="{!v.p2q12value}"/>
+  			</div>
+           
+			<div class="slds-col  slds-size_4-of-8">	
+			</div>
+		</div>	
+        <lightning:button name="Delete Address" label="Delete" onclick="{!c.p2AddAddressPhone}" />
+    </aura:if>  
+    
+    <br></br>
+    <br></br>
+        <div class="slds-grid  slds-gutters slds-p-left_large">
+			<div class="slds-col  slds-size_2-of-12 slds-p-left_large" >  
+                <lightning:select aura:id="p2select1" name="select" label="Phone Type" >
+        			<option value="Junk">Choose one...</option>
+        			<option value="Fax">Fax</option>
+        			<option value="Home">Home</option>
+        			<option value="Mobile">Mobile</option>
+                    <option value="Other">Other</option>
+                    <option value="Work">Work</option>
+    			</lightning:select>
+                
+                <aura:if isTrue="{!v.p2AddPhone == true}">
+                <lightning:select aura:id="p2select2" name="select" label="Phone Type" >
+        			<option value="Junk">Choose one...</option>
+        			<option value="Fax">Fax</option>
+        			<option value="Home">Home</option>
+        			<option value="Mobile">Mobile</option>
+                    <option value="Other">Other</option>
+                    <option value="Work">Work</option>
+    			</lightning:select>    
+                </aura:if>
+                
+     		</div>
+  
+			<div class="slds-col  slds-size_1-of-12">		
+			</div>
+           
+			<div class="slds-col  slds-size_2-of-12">   
+				<lightning:input name="input1" label="Phone Number" value="{!v.p2q14value}"/> 
+                <aura:if isTrue="{!v.p2AddPhone == true}">
+                    <lightning:input name="input1" label="Phone Number" value="{!v.p2q16value}"/> 
+                </aura:if>
+			</div>
+            
+            <div class="slds-col  slds-size_1-of-16">	
+			</div>
+            
+            <div class="slds-col  slds-size_1-of-12">
+                <br></br>
+                <lightning:button name="Add Phone" label="Add" onclick="{!c.p2AddAddressPhone}" />
+                <br></br>
+                <aura:if isTrue="{!v.p2AddPhone == true}">
+                    <br></br>
+                    <lightning:button name="Delete Phone" label="Delete" onclick="{!c.p2AddAddressPhone}" />
+                </aura:if>
+			</div>
+           
+			<div class="slds-col  slds-size_4-of-8">	
+			</div>
+		</div>
+        </aura:if>
+        
+		<aura:if isTrue="{!$Browser.formFactor == 'PHONE'}"> 
+        
+      			<lightning:input name="input1" label="Address Line 1" value="{!v.p2q1value}"/>
+        		<lightning:input name="input2" label="Address Line 2" value="{!v.p2q2value}"/>
+        		<lightning:input name="input3" label="City" value="{!v.p2q3value}"/>
+  			   
+				<lightning:input name="input1" label="County" value="{!v.p2q4value}"/> 
+				<lightning:input name="input1" label="State" value="{!v.p2q5value}"/>
+				<lightning:input name="input1" label="Zip/Postal Code" value="{!v.p2q6value}"/>
+  			    
+	<lightning:button name="Add Address" label="Add" onclick="{!c.p2AddAddressPhone}" />
+    <br></br>
+    <aura:if isTrue="{!v.p2AddAddress == true}">
+         
+       			<lightning:input name="input1" label="Address Line 1" value="{!v.p2q7value}"/>
+        		<lightning:input name="input2" label="Address Line 2" value="{!v.p2q8value}"/>
+        		<lightning:input name="input3" label="City" value="{!v.p2q9value}"/>
+  	   		 
+				<lightning:input name="input1" label="County" value="{!v.p2q10value}"/> 
+				<lightning:input name="input1" label="State" value="{!v.p2q11value}"/>
+				<lightning:input name="input1" label="Zip/Postal Code" value="{!v.p2q12value}"/>
+  							
+        <lightning:button name="Delete Address" label="Delete" onclick="{!c.p2AddAddressPhone}" />
+    </aura:if>  
+    
+    <br></br>
+    <br></br>          
+                <lightning:select aura:id="p2select1" name="select" label="Phone Type" >
+        			<option value="Junk">Choose one...</option>
+        			<option value="Fax">Fax</option>
+        			<option value="Home">Home</option>
+        			<option value="Mobile">Mobile</option>
+                    <option value="Other">Other</option>
+                    <option value="Work">Work</option>
+    			</lightning:select>
+            	<lightning:input name="input1" label="Phone Number" value="{!v.p2q14value}"/> 
+            	
+                <lightning:button name="Add Phone" label="Add" onclick="{!c.p2AddAddressPhone}" />
+                <br></br>
+            	<br></br>
+            
+                <aura:if isTrue="{!v.p2AddPhone == true}">
+                <lightning:select aura:id="p2select2" name="select" label="Phone Type" >
+        			<option value="Junk">Choose one...</option>
+        			<option value="Fax">Fax</option>
+        			<option value="Home">Home</option>
+        			<option value="Mobile">Mobile</option>
+                    <option value="Other">Other</option>
+                    <option value="Work">Work</option>
+    			</lightning:select>    
+                </aura:if>
+                
+                <aura:if isTrue="{!v.p2AddPhone == true}">
+                    <lightning:input name="input1" label="Phone Number" value="{!v.p2q16value}"/> 
+                </aura:if>
+		    
+               
+                <aura:if isTrue="{!v.p2AddPhone == true}">
+                    <lightning:button name="Delete Phone" label="Delete" onclick="{!c.p2AddAddressPhone}" />
+                </aura:if>
+		  
+        
+        </aura:if>
+        <br></br>
+        </aura:set>
+        </lightning:accordionSection>
+           
+        <lightning:accordionSection name="C" label="Facility Information:" class="top">
+           
+        <aura:set attribute="body">
+        <br></br>
+                
+        <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">
+		<div class="slds-grid  slds-gutters slds-p-left_large">
+			<div class="slds-col  slds-size_3-of-12 slds-p-left_large" >   
+       			<lightning:input name="input1" label="Address Line 1" value="{!v.p3q1value}"/>
+        		<lightning:input name="input2" label="Address Line 2" value="{!v.p3q2value}"/>
+        		<lightning:input name="input3" label="City" value="{!v.p3q3value}"/>
+  	   		</div>
+  
+			<div class="slds-col  slds-size_1-of-12">		
+			</div>
+           
+			<div class="slds-col  slds-size_2-of-12">   
+				<lightning:input name="input1" label="County" value="{!v.p3q4value}"/> 
+				<lightning:input name="input1" label="State" value="{!v.p3q5value}"/>
+				<lightning:input name="input1" label="Zip/Postal Code" value="{!v.p3q6value}"/>
+  			</div>
+           
+			<div class="slds-col  slds-size_4-of-8">	
+			</div>
+		</div>
+        
+   
+		<lightning:button name="Add Address" label="Add" onclick="{!c.p3AddAddressPhone}" />
+    	<br></br>
+    	<aura:if isTrue="{!v.p3AddAddress == true}">
+        <div class="slds-grid  slds-gutters slds-p-left_large">
+			<div class="slds-col  slds-size_3-of-12 slds-p-left_large" >   
+       			<lightning:input name="input1" label="Address Line 1" value="{!v.p3q7value}"/>
+        		<lightning:input name="input2" label="Address Line 2" value="{!v.p3q8value}"/>
+        		<lightning:input name="input3" label="City" value="{!v.p3q9value}"/>
+  	   		</div>
+  
+			<div class="slds-col  slds-size_1-of-12">		
+			</div>
+           
+			<div class="slds-col  slds-size_2-of-12">   
+				<lightning:input name="input1" label="County" value="{!v.p3q10value}"/> 
+				<lightning:input name="input1" label="State" value="{!v.p3q11value}"/>
+				<lightning:input name="input1" label="Zip/Postal Code" value="{!v.p3q12value}"/>
+  			</div>
+           
+			<div class="slds-col  slds-size_4-of-8">	
+			</div>
+		</div>	
+        <lightning:button name="Delete Address" label="Delete" onclick="{!c.p3AddAddressPhone}" />
+    </aura:if>  
+    
+    <br></br>
+    <br></br>
+        <div class="slds-grid  slds-gutters slds-p-left_large">
+			<div class="slds-col  slds-size_2-of-12 slds-p-left_large" >  
+                <lightning:select aura:id="p3select1" name="p3select1" label="Phone Type" >
+        			<option value="">choose one...</option>
+        			<option value="Fax">Fax</option>
+        			<option value="Home">Home</option>
+        			<option value="Mobile">Mobile</option>
+                    <option value="Other">Other</option>
+                    <option value="Work">Work</option>
+    			</lightning:select>
+                
+                <aura:if isTrue="{!v.p3AddPhone == true}">
+                <lightning:select aura:id="p3select2" name="p3select2" label="Phone Type" >
+        			<option value="">choose one...</option>
+        			<option value="Fax">Fax</option>
+        			<option value="Home">Home</option>
+        			<option value="Mobile">Mobile</option>
+                    <option value="Other">Other</option>
+                    <option value="Work">Work</option>
+    			</lightning:select>    
+                </aura:if>
+                
+     		</div>
+  
+			<div class="slds-col  slds-size_1-of-12">		
+			</div>
+           
+			<div class="slds-col  slds-size_2-of-12">   
+				<lightning:input name="input1" label="Phone Number" value="{!v.p3q14value}"/> 
+                <aura:if isTrue="{!v.p3AddPhone == true}">
+                    <lightning:input name="input1" label="Phone Number" value="{!v.p3q16value}"/> 
+                </aura:if>
+			</div>
+            
+            <div class="slds-col  slds-size_1-of-16">	
+			</div>
+            
+            <div class="slds-col  slds-size_1-of-12">
+                <br></br>
+                <lightning:button name="Add Phone" label="Add" onclick="{!c.p3AddAddressPhone}" />
+                <br></br>
+                <aura:if isTrue="{!v.p3AddPhone == true}">
+                    <br></br>
+                    <lightning:button name="Delete Phone" label="Delete" onclick="{!c.p3AddAddressPhone}" />
+                </aura:if>
+			</div>
+           
+			<div class="slds-col  slds-size_4-of-8">	
+			</div>
+		</div>
+            </aura:if>
+        
+        
+        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">
+		 
+       			<lightning:input name="input1" label="Address Line 1" value="{!v.p3q1value}"/>
+        		<lightning:input name="input2" label="Address Line 2" value="{!v.p3q2value}"/>
+        		<lightning:input name="input3" label="City" value="{!v.p3q3value}"/>
+  	 		  
+				<lightning:input name="input1" label="County" value="{!v.p3q4value}"/> 
+				<lightning:input name="input1" label="State" value="{!v.p3q5value}"/>
+				<lightning:input name="input1" label="Zip/Postal Code" value="{!v.p3q6value}"/>
+  		
+	<lightning:button name="Add Address" label="Add" onclick="{!c.p3AddAddressPhone}" />
+    <br></br>
+            <br></br>
+    <aura:if isTrue="{!v.p3AddAddress == true}">
+    	
+       			<lightning:input name="input1" label="Address Line 1" value="{!v.p3q7value}"/>
+        		<lightning:input name="input2" label="Address Line 2" value="{!v.p3q8value}"/>
+        		<lightning:input name="input3" label="City" value="{!v.p3q9value}"/>
+  	   		
+				<lightning:input name="input1" label="County" value="{!v.p3q10value}"/> 
+				<lightning:input name="input1" label="State" value="{!v.p3q11value}"/>
+				<lightning:input name="input1" label="Zip/Postal Code" value="{!v.p3q12value}"/>
+  			
+        <lightning:button name="Delete Address" label="Delete" onclick="{!c.p3AddAddressPhone}" />
+    </aura:if>  
+    
+    <br></br>
+    <br></br>
+         
+                <lightning:select aura:id="p3select1" name="p3select1" label="Phone Type" >
+        			<option value="">choose one...</option>
+        			<option value="Fax">Fax</option>
+        			<option value="Home">Home</option>
+        			<option value="Mobile">Mobile</option>
+                    <option value="Other">Other</option>
+                    <option value="Work">Work</option>
+    			</lightning:select>
+            <lightning:input name="input1" label="Phone Number" value="{!v.p3q14value}"/>
+            <lightning:button name="Add Phone" label="Add" onclick="{!c.p3AddAddressPhone}" />
+                
+                <aura:if isTrue="{!v.p3AddPhone == true}">
+                <br></br>
+                <lightning:select aura:id="p3select2" name="p3select2" label="Phone Type" >
+        			<option value="">choose one...</option>
+        			<option value="Fax">Fax</option>
+        			<option value="Home">Home</option>
+        			<option value="Mobile">Mobile</option>
+                    <option value="Other">Other</option>
+                    <option value="Work">Work</option>
+    			</lightning:select>  
+                    <lightning:input name="input1" label="Phone Number" value="{!v.p3q16value}"/> 
+                    <lightning:button name="Delete Phone" label="Delete" onclick="{!c.p3AddAddressPhone}" />
+                </aura:if>
+             </aura:if>
+            
+            </aura:set>
+        </lightning:accordionSection>
+            </lightning:accordion>
+        
+		<aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">    	 
+        	<div class="slds-float_right">              
+            	<lightning:button value='one' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+            	<lightning:button value='one' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" />
+            	<lightning:button value='one' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />        
+    		</div>
+        </aura:if>
+        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">    	
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='one' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='one' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" /> 
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='one' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />            	
+        	</div>
+    	</aura:if>
+    </div>
+	
+</aura:component>

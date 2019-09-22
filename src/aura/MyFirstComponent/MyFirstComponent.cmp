@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <div class="slds-p-around_x-large">
+    <h1 class="red"> My First Lightning Component </h1>
+        <h1 style="background-color:red;color:blue"> My First Lightning Component </h1>
+        <h1> My First Lightning Component </h1>
+<h1> My First Lightning Component </h1>
+        </div>
+	
+</aura:component>

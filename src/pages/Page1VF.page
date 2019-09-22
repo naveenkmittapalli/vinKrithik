@@ -1,0 +1,10 @@
+<apex:page controller="Page1VFCtrl">
+    <apex:form >
+    	Value1 being passed <apex:inputText value="{!inptext1}"/>
+        Value2 being passed <apex:inputText value="{!inptext2}"/>
+        Value3 being passed <apex:inputText value="{!inptext3}"/>
+        
+        <apex:commandButton value="NEXT" action="{!move}"/>
+    </apex:form>
+    
+</apex:page>

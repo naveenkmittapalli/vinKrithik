@@ -1,0 +1,44 @@
+<apex:page standardController="Account" extensions="Accntexntnctrl">
+    <apex:form id="form1">
+    
+   <apex:includeScript value="/lightning/lightning.out.js" />
+   <apex:includeLightning />
+    
+    
+      <div style="position:relative;width:100%;align:center;">
+        <!-- REQUIRED SLDS WRAPPER -->
+            <div class="slds">   
+            
+                    <script>
+                       
+                       $Lightning.use("c:navchkcompapp", function() {
+                           $Lightning.createComponent("c:navchkcomp",
+                          { RecId : "{!RecId}",
+                            FinalUrl   : "{!FinalUrl}"},                          
+                          "navchkcompapp",
+                          function(cmp) {
+                          $A.eventService.addHandler({ "event": "c:passevttovf", "handler" : VFEventHandler}); 
+                          });
+                        });
+                
+                function VFEventHandler(event){
+        			console.log('event is handled by VF page function');
+        			var myEventData = event.getParam("accountIdPassedFromEvent");
+    				console.log('value passed from component;'+myEventData);
+                    //document.getElementById("pg1:j_id3:j_id4:j_id5:j_id7:inptxt").value = myEventData;
+                    document.getElementById('{!$Component.form1.PassedValueFromCmp}').value = myEventData;
+        			console.log('value assigned to VF page variable:'+myEventData);
+    			}
+                         
+                    </script>
+               
+                <div id="navchkcompapp"></div>
+          </div>
+      </div> 
+    
+    </apex:form>
+    
+    <apex:form > 
+    Value from Lightning component to VisualForce Page : {!PassedValueFromCmp}
+    </apex:form>
+</apex:page>

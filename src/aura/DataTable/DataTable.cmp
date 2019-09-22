@@ -1,0 +1,14 @@
+<aura:component Controller = "DataTableApex">
+    <aura:attribute name="data" type="Object" />
+    <aura:attribute name="columns" type="Object" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:datatable aura:id="accountTable" 
+                         keyField = "Id"
+                         data = "{!v.data}"
+                         columns = "{!v.columns}" 
+                         hideCheckboxColumn = "false"
+                         onrowselection = "{!c.doSelect}"/>
+	
+</aura:component>

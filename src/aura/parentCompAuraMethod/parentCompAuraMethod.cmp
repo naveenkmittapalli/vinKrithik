@@ -1,0 +1,5 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <c:childCompAuraMethod aura:id="child" />
+    <lightning:button name="Child Action" label="Child Action" onclick="{!c.callChild}" />
+	
+</aura:component>

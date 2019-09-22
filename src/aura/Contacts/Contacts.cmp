@@ -1,0 +1,37 @@
+<aura:component controller = "relcontacts"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:isUrlAddressable" access="global" >
+    
+    <aura:attribute name="contactlist" type="Contact[]" access="public"/>
+    
+    <aura:attribute name="FirstName" type="string" access="public"/>
+    <aura:attribute name="LastName" type="string" access="public"/>
+    <aura:attribute name="Phone" type="string" access="public"/>
+    <aura:attribute name="Email" type="string" access="public"/>
+    
+    
+    <aura:handler name="init" value= "{!this}" action="{!c.getcontacts}"/>
+    Related Contacts 
+    <br></br>
+    <br></br>
+    <br></br>
+      
+    <div class="slds-m-horizontal_small">
+     <div class="slds-grid slds-wrap">
+     <aura:iteration items="{!v.contactlist}" var="item">
+     <div class="slds-col slds-size_1-of-3 slds-m-horizontal_small">    
+     <lightning:card footer="{!item.Phone}" title="{!item.Name}" iconName = "action:user">       
+        {!item.FirstName} <br></br>
+        {!item.LastName} <br></br>
+        {!item.Phone} <br></br>
+        {!item.Email}  <br></br>
+        <aura:set attribute="actions">
+        <lightning:button label="View Details" variant="brand" name="{!item.Id}" onclick = "{!c.redirect}"/>
+        </aura:set>        
+    </lightning:card>
+      </div>
+        </aura:iteration>
+         </div>
+        </div>
+    
+    
+</aura:component>

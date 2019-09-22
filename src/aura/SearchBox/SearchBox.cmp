@@ -1,0 +1,31 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="searchType" type="string" />
+    <aura:attribute name="searchString" type="string" />
+    
+    // Register The Event
+    <aura:registerEvent name="updateParent" type="c:CompEvent1"/>
+    
+    
+    {!v.searchType} <br/>
+    {!v.searchString} <br/>
+  
+    <div class="slds-form-element">
+  		<label class="slds-form-element__label" for="text-input-id-1">Search For</label>
+  		<div class="slds-form-element__control">
+    		<input id="text-input-id-1" placeholder="" class="slds-input" type="text" value="!v.searchString" />
+  		</div>
+	</div>
+    
+    <lightning:button variant="brand"
+                          label="Search Contacts"
+                          title="Search Contacts"
+                          onclick="{! c.passContact }" />
+    
+    <lightning:button variant="brand"
+                          label="Search Accounts"
+                          title="Search Accounts"
+                          onclick="{! c.passAccount }" />
+    
+    
+</aura:component>

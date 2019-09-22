@@ -1,0 +1,81 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,lightning:isUrlAddressable" access="global" >  
+    <aura:attribute name="tabno" type="string" default="Tab1" />
+    <aura:attribute name="page1" type="boolean" default="true" />
+    <aura:attribute name="selTabId" type="string" default="one" />
+    
+    <!-- Navigation -->
+    <lightning:navigation aura:id="navService"/>
+    
+    <!-- General Attributes -->
+    <aura:attribute name="yesNoOptions" type="List" default="[
+    {'label': 'Yes', 'value': 'Yes'},
+    {'label': 'No', 'value': 'No'}
+    ]"/>
+    
+    <!-- Screen 7 Attributes -->
+    <aura:attribute name= "screen7Direction" type="String" default = "" />
+    <aura:attribute name= "screen7CurrSection" type="String" default = "" />
+    
+    <!-- Screen 4 Attributes -->
+    <aura:attribute name= "screen4Direction" type="String" default = "" />
+    <aura:attribute name= "screen4CurrSection" type="String" default = "" />
+    
+    <!-- Next Screen Event handlers -->
+    <aura:handler name="screen1NextEvent" event="c:screen1NextEvent" action="{!c.processNext}"/>
+    <aura:handler name="screen2NextEvent" event="c:screen2NextEvent" action="{!c.processNext}"/>
+    <aura:handler name="screen3NextEvent" event="c:screen3NextEvent" action="{!c.processNext}"/>
+    <aura:handler name="screen4NextEvent" event="c:screen4NextEvent" action="{!c.processNext}"/>
+    <aura:handler name="screen5NextEvent" event="c:screen5NextEvent" action="{!c.processNext}"/>
+    <aura:handler name="screen6NextEvent" event="c:screen6NextEvent" action="{!c.processNext}"/>
+    <aura:handler name="screen7NextEvent" event="c:screen7NextEvent" action="{!c.processNext}"/>
+    <aura:handler name="screen8NextEvent" event="c:screen8NextEvent" action="{!c.processNext}"/>
+    <aura:handler name="screen9NextEvent" event="c:screen9NextEvent" action="{!c.processNext}"/>
+    <aura:handler name="screen10NextEvent" event="c:screen10NextEvent" action="{!c.processNext}"/>
+    <aura:handler name="screen11NextEvent" event="c:screen11NextEvent" action="{!c.processNext}"/>
+   
+    
+    <lightning:tabset variant="scoped" aura:id="tabs" selectedTabId="{!v.selTabId}">
+        <lightning:tab label="Details:" id="one">
+            
+            <c:screen1 />
+        </lightning:tab>
+        
+        <lightning:tab label="Needs Assessment" id="four">
+            <c:TabNameComponent tabName = "Needs Assessment Information:" />
+            <c:screen4 prevSection = "{!v.screen4Direction}" currSection = "{!v.screen4CurrSection}"/>
+        </lightning:tab>
+        <lightning:tab label="Training Requirements" id="five">
+            <c:TabNameComponent tabName = "Training Requirements:" />
+            <c:screen5 />
+        </lightning:tab>
+        <lightning:tab label="Location" id="six">
+            <c:TabNameComponent tabName = "Location:" />
+            <c:screen6 />
+        </lightning:tab>
+        <lightning:tab label="Inspections" id="seven">
+            <c:screen7 prevSection = "{!v.screen7Direction}" currSection = "{!v.screen7CurrSection}"/>
+        </lightning:tab>
+        <lightning:tab label="Financial Information" id="eight">
+            <c:TabNameComponent tabName = "Financial Information:" />
+            <c:screen8 />
+        </lightning:tab>
+        <lightning:tab label="General Information" id="nine">
+            <c:TabNameComponent tabName = "General Information:" />
+            <c:screen9 />
+        </lightning:tab>
+        <lightning:tab label="Background" id="ten">
+            <c:TabNameComponent tabName = "Background:" />
+            <c:screen10 />
+        </lightning:tab>
+        <lightning:tab label="Business / Zoning Issues" id="eleven">
+            <c:TabNameComponent tabName = "Business / Zoning Issues:" />
+        	<c:screen11 />    
+        </lightning:tab>
+        
+    </lightning:tabset>
+    
+    
+    
+    <!-- {!v.selTabId} -->
+
+</aura:component>

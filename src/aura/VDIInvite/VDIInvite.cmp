@@ -1,0 +1,53 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" 
+                access="global" 
+                controller = "ContactEmailSend">
+    
+    <aura:attribute name="RepisVDAIAR" type = "boolean" default = "true" />
+    <aura:attribute name="start" type="boolean" default="false"/>
+    <aura:attribute name="options" type="string[]" default="" />
+    <aura:attribute name="selectedValue" type="string" access="public"/>
+    <aura:attribute name="emailsentstatus" type="string" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    
+  
+    <!--Use "slds-m-around_xx-large" class to add standard X-Large padding to the component--> 
+    <div class="slds-m-around_xx-large"> 
+        <aura:if isTrue="{!v.start}">
+        <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->   
+        <aura:if isTrue="{!v.RepisVDAIAR}">
+           
+            <lightning:select name="Pershing_Number" label="Select a Pershing Number:" aura:id="Pershing_Number" value="{!v.selectedValue}">
+           		<aura:iteration items="{!v.options}" var="option">
+                    	<option text="{!option}" value="{!option}" /> 
+        		</aura:iteration>
+  			</lightning:select>   
+            
+            Selected Pershing Number is {!v.selectedValue} <br></br>
+            
+            <lightning:button label="Continue" name="Continue" variant="brand" onclick="{!c.StartEmailProcess}" />
+            <lightning:button label="Cancel" name="Cancel" variant="brand" onclick="{!c.closeModal}" />      
+       	 <aura:set attribute="else">
+             You dont have permission for this action.<br></br>
+             Please request access for VDI.<br></br>
+            <br></br>
+            <br></br>
+            <lightning:button label="Close" name="Close" variant="brand" onclick="{!c.closeModal}" />
+
+        </aura:set>
+        </aura:if>
+        </aura:if>
+        
+        
+        <aura:if isTrue="{!v.emailsentstatus == 'SUCCESS'}">
+            Email has been successfully sent <br></br>
+            Selected Pershing Number is {!v.selectedValue} <br></br>
+            <lightning:button label="Close" name="Close" variant="brand" onclick="{!c.closeModal}" />  
+         </aura:if>   
+        <br></br>
+        <br></br>
+        
+            
+    </div>
+</aura:component>

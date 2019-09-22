@@ -1,0 +1,29 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name = "NAME" type = "string" default = "Naveen" />
+    <aura:attribute name = "colorList" type = "list" default = "['Red', 'Yellow', 'White', 'Pink']" />
+    <lightning:button variant="brand" label="Component Valid" title="Component Valid" onclick="{! c.isValid }" aura:id = "Component_Valid"/> <br/>
+    <lightning:button variant="brand" label="Component Name" title="Component Name" onclick="{! c.getName }" aura:id = "Component_Name"/> <br/>
+    <lightning:button variant="brand" label="Get Attribute Value" title="Get Attribute Value" onclick="{! c.getAttr }" aura:id = "GAttribute_Value"/> <br/>
+    <lightning:button variant="brand" label="Set Attribute Value" title="Set Attribute Value" onclick="{! c.setAttr }" aura:id = "SAttribute_Value"/> <br/>
+    <br/>
+    <lightning:input aura:id = "inputField" Label = "Enter a Name" /><br/>
+    <lightning:button variant="brand" label="Change Name" title="Change Name" onclick="{! c.setName }" /> <br/>
+    <br/><br/><br/>
+    
+    
+    <aura:if isTrue="{!v.NAME eq 'NAVEEN'}">
+    I am Naveen
+    <aura:set attribute="else">
+    I am not Naveen
+    </aura:set>
+  </aura:if> 
+    
+    <aura:iteration items="{!v.colorList}" var="item">
+        {!item} <br/>        
+    </aura:iteration>
+
+    
+    <!-- My Name is {!v.NAME} -->
+	
+</aura:component>

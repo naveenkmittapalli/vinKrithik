@@ -1,0 +1,12 @@
+<apex:page standardController="custcontact__c" extensions="SurveyPageController">
+    <apex:form >
+    <apex:pageBlock title="Survey Details"> 
+        Enter your Name    : <apex:inputField value="{!s.Enter_your_Name__c}" /> <br/>
+        Are you Satisfied  : <apex:inputField value="{!s.Satisfaction__c}" /> <br/>
+        Rating 1- Excellent
+               5- Poor     : <apex:inputField value="{!s.Rating__c}" /> <br/>
+        Comments           : <apex:inputField value="{!s.Comments__c}" /> <br/>     
+     </apex:pageBlock>
+        <apex:commandButton value="Submit" action="{!SaveSurvey}" />
+    </apex:form>  
+</apex:page>

@@ -1,0 +1,164 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" >
+    
+    <aura:attribute name="prevSection" type = "String" />
+    <aura:attribute name="currSection" type = "String" />
+    
+    <aura:attribute name="yesNoOptions" type="List" default="[
+    {'label': 'Yes', 'value': 'Yes'},
+    {'label': 'No', 'value': 'No'}
+    ]"/>
+    
+    <aura:attribute name="p4s1q1Options" type="List" default="[
+    {'label': 'Family Child Care', 'value': 'Family Child Care'},
+    {'label': 'Relative Care', 'value': 'Relative Care'},
+	{'label': 'Child Care Center Care', 'value': 'Child Care Center Care'},
+	{'label': 'Other', 'value': 'Other'}
+    ]"/>
+    
+    <aura:attribute name="p4s1q1value" type="String"/>
+    <aura:attribute name="p4s1q2value" type="String"/>
+    <aura:attribute name="p4s1q3value" type="String"/>
+    <aura:attribute name="p4s1q4value" type="String"/>
+    <aura:attribute name="p4s1q5value" type="String"/>
+    <aura:attribute name="p4s1q6value" type="String"/>
+    <aura:attribute name="p4s1q7value" type="String"/>
+    <aura:attribute name="p4s1q8value" type="String"/>
+    
+    <aura:attribute name="p4s2q1value" type="String"/>
+    <aura:attribute name="p4s2q2value" type="String"/>
+    <aura:attribute name="p4s2q3value" type="String"/>
+    <aura:attribute name="p4s2q4value" type="String"/>
+    <aura:attribute name="p4s2q5value" type="String"/>
+    <aura:attribute name="p4s2q6value" type="String"/>
+    <aura:attribute name="p4s2q7value" type="String"/>
+    <aura:attribute name="p4s2q8value" type="String"/>
+    <aura:attribute name="p4s2q9value" type="String"/>
+    
+    <aura:attribute name="p4s3q1value" type="String"/>
+    <aura:attribute name="p4s3q2value" type="String"/>
+    <aura:attribute name="p4s3q3value" type="String"/>
+    <aura:attribute name="p4s3q4value" type="String"/>
+    
+    <aura:attribute name="pStatus" type="String"/>
+    
+    <!-- Next Event Registration -->
+    <aura:registerEvent name="screen4NextEvent" type="c:screen4NextEvent"/>
+    
+    <!-- Init Handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+      
+    <div class="slds-clearfix">
+		<div class="slds-float_right">
+    		<lightning:button value='seven' label='Back' variant = 'brand' onclick="{!c.processBack}" />
+  		</div>
+                <br></br>
+                <br></br>   
+        <aura:if isTrue="{!v.currSection == 'section1'}">
+            
+            1. What is the most common type of child care in your area?
+    <lightning:radioGroup name="p4s1q1"
+                          label=""
+                          options="{!v.p4s1q1Options}"
+                          value="{!v.p4s1q1value}"
+                          type="radio"/>
+        <lightning:input name="input1" label="" value="{!v.p4s1q2value}"/>    
+    <br></br>
+        
+        <lightning:input name="p4s1q3" label="2. How many child care centers/facilities/homes are operating in your area?" value="{!v.p4s1q3value}"/>
+        <br></br>
+        <lightning:input name="p4s1q4" label="3. What ages do they serve?" value="{!v.p4s1q4value}"/>
+        <br></br>
+            4. Do the existing centers/facilities have a waiting list?       
+    	<lightning:radioGroup name="p4s1q5"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p4s1q5value}"
+                          type="radio"/>
+         <lightning:radioGroup name="p4s1q6"
+                          label="If so, is it for specific age group(s)?"
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p4s1q6value}"
+                          type="radio"/>
+            <lightning:input name="p4s1q7" label="If Yes, list age group(s)" value="{!v.p4s1q7value}"/>
+        <br></br>
+            <lightning:input name="p4s1q8" label="5. Is there a reason they have a waiting list (i.e good reputation, convenient location, hours of operation, etc.)?" value="{!v.p4s1q8value}"/>
+        <br></br>
+        <br></br>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.currSection == 'section2'}">
+            
+        6. Do existing child care programs have unfulfilled spaces?       
+    	<lightning:radioGroup name="p4s2q1"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p4s2q1value}"
+                          type="radio"/>
+            <lightning:input name="p4s2q2" label="If so, is there a reason (i.e location)?" value="{!v.p4s2q2value}"/>
+        <br></br>
+        7. What age group is most in need of care?
+        <br></br>
+            <lightning:input name="p4s2q3" label="" value="{!v.p4s2q3value}"/>
+        8. Are there particular programs or services that are needed (i.e transportation, summer programs, infant care, etc.)?
+        <br></br>
+            <lightning:input name="p4s2q4" label="" value="{!v.p4s2q4value}"/>
+        9. What days/hours do existing child care programs operate?
+        <br></br>
+            <lightning:input name="p4s2q5" label="" value="{!v.p4s2q5value}"/>
+        10. What fees are charged?
+        <br></br>
+            <lightning:input name="p4s2q6" label="" value="{!v.p4s2q6value}"/>
+        11. What is the typical wage in your area for a child care staff person?
+        <br></br>
+            <lightning:input name="p4s2q7" label="" value="{!v.p4s2q7value}"/>
+            Director?
+            <lightning:input name="p4s2q8" label="" value="{!v.p4s2q8value}"/>
+        
+        12. Do other child care programs in your area have difficulty recruiting or retaining staff?       
+    	<lightning:radioGroup name="p4s2q9"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p4s2q9value}"
+                          type="radio"/>
+        <br></br>
+        
+        </aura:if>
+        
+        <aura:if isTrue="{!v.currSection == 'section3'}">
+            
+        13. What training resources will be available to you and your staff in your area?
+        <br></br>
+            <lightning:input name="p4s3q1" label="" value="{!v.p4s3q1value}"/>
+        14. How have you determined that there is a need in your community for your proposed child care program?
+        <br></br>
+            <lightning:input name="p4s3q2" label="" value="{!v.p4s3q2value}"/>
+        15. How are you preparing to meet the need?
+        <br></br>
+            <lightning:input name="p4s3q3" label="" value="{!v.p4s3q3value}"/>
+        16. What is the program's Statement of Purpose or your Mission Statement?
+        <br></br>
+            <lightning:input name="p4s3q4" label="" value="{!v.p4s3q4value}"/>
+       <br></br>
+        </aura:if>
+        <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">    	 
+        	<div class="slds-float_right">              
+            	<lightning:button value='four' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+            	<lightning:button value='four' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" />
+            	<lightning:button value='four' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />        
+    		</div>
+        </aura:if>
+        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">    	
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='four' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='four' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" /> 
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='four' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />            	
+        	</div>
+    	</aura:if>
+       		</div>
+	
+</aura:component>

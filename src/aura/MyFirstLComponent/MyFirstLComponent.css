@@ -1,0 +1,11 @@
+.THIS {
+    background-color : green;
+    font-size : 40px;
+}
+.THIS .red {
+    color : red;
+}
+
+.THIS .bgyellow {
+    background-color : yellow;
+}

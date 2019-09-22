@@ -1,0 +1,27 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" 
+                controller = "smoketestapex">
+    
+    <aura:attribute name="start" type = "boolean"  default="false"/>
+    <aura:attribute name="RepHasAccess" type="boolean" default="false" />
+    <aura:attribute name="AvailPershingNos" type="string[]" default="" />
+    <aura:attribute name="SelectedPershingNo" type="string" default="" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!and(v.start, v.RepHasAccess)}">   
+        <lightning:select name="Pershing_Number" label="Please select" aura:id="Pershing_Number" value="{!v.SelectedPershingNo}" >
+        <option value="">Please select</option>
+    	<aura:iteration items="{!v.AvailPershingNos}" var="PershingNo">            
+        	<option text="{!PershingNo}" value="{!PershingNo}" /> 
+        </aura:iteration>
+  	</lightning:select> 
+    </aura:if>
+    
+    <aura:if isTrue="{!and(v.start, (v.RepHasAccess == false))}">      
+        <lightning:button label="Cancel" name="Cancel" variant="destructive" onclick="{!c.CloseScreen}" /> 
+    </aura:if>
+    
+    Value Selected is {!v.SelectedPershingNo}
+	
+</aura:component>

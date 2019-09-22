@@ -1,0 +1,20 @@
+<apex:page controller="AsyncVFContrlr">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Insert Using Queueable Apex">
+        		How many Contacts to Create ::: <apex:inputText value="{!numofcontacts}"/> <br/>
+    			<apex:commandButton value="Create Contacts" action="{!insertCnts}"/> <br/>    			
+                </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Delete Using Queueable Apex">
+            	<apex:commandButton value="Delete Contacts" action="{!deleteCnts}"/> <br/>
+            </apex:pageBlockSection>
+            
+        	<apex:pageBlockSection title="Future">
+    			<!-- <apex:commandButton value= "Future Method" action = "{!futureMethod}"/> <br/>     -->
+                {!futureMethodstr} <br/>
+            </apex:pageBlockSection>
+            
+            </apex:pageBlock>
+    </apex:form>
+</apex:page>

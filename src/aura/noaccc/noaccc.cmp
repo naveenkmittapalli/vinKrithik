@@ -1,0 +1,31 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="LghtnrClsc" type="string" default = "" />
+    
+    
+    
+    <div class="slds-page-header">
+		<div class="slds-page-header__name">
+			<div class="slds-page-header__name-title">
+            	<h1>
+                	You are currently not provisioned for VDA. <br></br>             
+             		Please follow the Link <ui:outputURL aura:id="url" label="https://professionals.voya.com/stellent/secure/6117129.pdf" class="field" value="https://professionals.voya.com/stellent/secure/6117129.pdf"/> for more information on how to get access<br></br>
+                </h1>
+            </div>
+        </div>
+    </div> 
+             You are currently not provisioned for VDA. <br></br>             
+             Please follow the Link <ui:outputURL aura:id="url" label="https://professionals.voya.com/stellent/secure/6117129.pdf" class="field" value="https://professionals.voya.com/stellent/secure/6117129.pdf"/> for more information on how to get access<br></br>
+    <br></br>
+    <br></br>    
+    <!--Value is : {!v.LghtnrClsc} -->
+    <br></br>
+    <br></br>
+    
+       
+	<div class="slds-grid slds-wrap slds-m-top_x-small slds-m-bottom_xx-small">       
+		<div class="slds-col slds-size_2-of-2 slds-text-align_right">
+           	<lightning:button label="Close" name="Close" variant="brand" onclick="{!c.CloseScreen}" /> 
+       	</div>
+    </div>
+ 
+</aura:component>

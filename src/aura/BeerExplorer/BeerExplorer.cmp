@@ -1,0 +1,14 @@
+<aura:component implements="force:appHostable,lightning:isUrlAddressable" controller = "BeerSearchAura">
+    <aura:handler name="SearchText" event = "c:SearchEvent" action = "{!c.handleCompEvent}"/>
+    <aura:attribute name="beerList" type = "Object" />
+    
+    
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}" />
+    <lightning:navigation aura:id="navigateToComponent"/>
+    
+    
+    <c:BeerSearch />
+    
+    <c:BeerListComponent beerList = "{!v.beerList}" />
+	
+</aura:component>

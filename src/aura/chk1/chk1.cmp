@@ -1,0 +1,40 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="LghtnrClsc" type="string" default = "" />
+    
+    <!--<aura:registerEvent name="noaVFPageEvent" type="c:ROBONOAVFPageEvent" />-->
+    <div class="slds-align_absolute-center" >
+    <div class="slds-page-header">
+		<div class="slds-page-header__name">
+			<div class="slds-page-header__name-title">
+            	<h1>                	
+                    <span class="slds-page-header__title " title="Action Not Permitted">You are currently not provisioned for VDA. <br></br>             
+             Please follow the Link <ui:outputURL aura:id="url" label="https://professionals.voya.com/stellent/secure/6117129.pdf" class="field" value="https://professionals.voya.com/stellent/secure/6117129.pdf"/> for more information on how to get access.<br></br></span>
+                </h1>
+            </div>
+        </div>
+    </div> 
+    </div>
+             
+    <br></br>
+    <br></br>    
+    <!--Value is : {!v.LghtnrClsc} -->
+    <br></br>
+    <br></br>
+    
+       
+	<div class="slds-grid slds-wrap slds-m-top_x-small slds-m-bottom_xx-small">       
+		<div class="slds-col slds-size_2-of-2 slds-text-align_right">
+           	<lightning:button label="Close" name="Close" variant="brand" onclick="{!c.CloseScreen}" /> 
+       	</div>
+    </div>
+    
+    
+    <aura:if isTrue="{!v.LghtnrClsc == 'lassic'}">
+		<div class="slds-grid slds-wrap slds-m-top_x-small slds-m-bottom_xx-small">       
+			<div class="slds-col slds-size_2-of-2 slds-text-align_right">
+                <lightning:button label="Please Close this Window" name="Please Close this Window" variant="brand" />           	
+        	</div>
+    	</div>
+    </aura:if>
+	
+</aura:component>

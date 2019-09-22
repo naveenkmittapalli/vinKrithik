@@ -1,0 +1,57 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="recordFields" type="Object"/>
+    <aura:attribute name="recordError" type="Object"/>
+    
+    <aura:attribute name="record1" type="Object"/>
+    <aura:attribute name="recordFields1" type="Object"/>
+    <aura:attribute name="recordError1" type="Object"/>
+    
+    <aura:attribute name="record2" type="Object"/>
+    <aura:attribute name="recordFields2" type="Object"/>
+    <aura:attribute name="recordError2" type="Object"/>
+    
+    <lightning:navigation aura:id="navRef" />
+    
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}" />
+   
+    <force:recordData aura:id="recordLoader"
+    recordId="{!v.recordId}"
+    layoutType = "FULL"
+    mode = "VIEW"
+    fields = "Id, Name"
+    targetFields="{!v.recordFields}"
+    targetError="{!v.recordError}"
+    targetRecord = "{!v.record}"
+    />
+    Using Target Fields <br/>
+    {!v.recordFields.Name} <br/>
+    {!v.recordFields.Id} <br/>
+    Using Target Records <br/>
+    {!v.record.Fields.Name.value} <br/>
+    
+    <force:recordData aura:id="recordCreater"
+    layoutType = "FULL"
+    mode = "VIEW"
+    targetFields="{!v.recordFields1}"
+    targetError="{!v.recordError1}"
+    targetRecord = "{!v.record1}"
+    />
+    
+    <force:recordData aura:id="recordDeleter"
+    recordId="{!v.recordId}"
+    layoutType = "FULL"
+    mode = "VIEW"
+    fields = "Id, Name"
+    targetFields="{!v.recordFields2}"
+    targetError="{!v.recordError2}"
+    targetRecord = "{!v.record2}"
+    />
+    
+    <lightning:input required="true" value = "{!v.recordFields1.Name}" Label = "Beer Name" />
+    <lightning:button variant = "Brand" label = "Save Beer Record" onclick = "{!c.saveRecord}" /> <br/>
+    <lightning:button variant = "Brand" label = "Delete Beer Record" onclick = "{!c.deleteRecord}" />
+    
+    
+	
+</aura:component>

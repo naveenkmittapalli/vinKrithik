@@ -1,0 +1,4 @@
+<aura:event type="Component" description="Event template" >
+    <aura:attribute name="var1" type = "string" />
+    <aura:attribute name="var2" type = "integer" />
+</aura:event>

@@ -1,0 +1,84 @@
+<apex:page controller="CustomCtrl">
+    <apex:form >
+        <apex:pageBlock >
+        <!-- {!hello_msg}  <apex:inputText value="{!hello_msg}" /> -->    
+        <apex:tabPanel switchType="Ajax">
+        	<apex:tab label="Customer - Direct" labelWidth="300">
+                <apex:pageBlockTable value="{!a_d}" var="ACC" >
+                    <apex:column value="{!ACC.Id}"/>
+                    <apex:column value="{!ACC.Name}"/>
+                    <apex:column value="{!ACC.Type}"/>
+                    <apex:column value="{!ACC.Industry}"/>
+                    <apex:column value="{!ACC.Phone}"/>
+                    <apex:inlineEditSupport />
+                </apex:pageBlockTable>
+            
+            </apex:tab>
+            
+            <apex:tab label="Customer - Channel" labelWidth="300" >
+            	<apex:pageBlockTable value="{!a_c}" var="ACC" >
+                    <apex:column value="{!ACC.Id}"/>
+                    <apex:column value="{!ACC.Name}"/>
+                    <apex:column value="{!ACC.Type}"/>
+                    <apex:column value="{!ACC.Industry}"/>
+                    <apex:column value="{!ACC.Phone}"/>
+                    <apex:inlineEditSupport />
+                </apex:pageBlockTable>
+            </apex:tab>
+        </apex:tabPanel>
+            
+        <apex:commandButton value="DIRECT ACCOUNTS" action="{!Direct_Acts}" reRender="BUTTON"/>
+        <apex:commandButton value="CHANNEL ACCOUNTS" action="{!Channel_Acts}" reRender="BUTTON"/>
+            <br/>{!Acct_Type} <br/>
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockTable value="{!a}" var="ACC" id="BUTTON">
+                    <apex:column value="{!ACC.Id}"/>
+                    <apex:column value="{!ACC.Name}"/>
+                    <apex:column value="{!ACC.Type}"/>
+                    <apex:column value="{!ACC.Industry}"/>
+                    <apex:column value="{!ACC.Phone}"/>
+                    <apex:inlineEditSupport />
+                </apex:pageBlockTable>            
+            </apex:pageBlockSection>
+         
+            <br/>
+            
+            <apex:commandButton value="RENDER CHECK" action="{!Render_Chk}" /> 
+            <apex:pageBlockSection columns="1" rendered="{!renderr}">
+                <apex:pageBlockTable value="{!a_c}" var="ACC" id="BUTTON1">
+                    <apex:column value="{!ACC.Id}"/>
+                    <apex:column value="{!ACC.Name}"/>
+                    <apex:column value="{!ACC.Type}"/>
+                    <apex:column value="{!ACC.Industry}"/>
+                    <apex:column value="{!ACC.Phone}"/>
+                    <apex:inlineEditSupport />
+                </apex:pageBlockTable>            
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="5" title="Page Navigation">
+            <apex:commandButton value="Navigate to VF Page" action="{!GOTOVF}" />
+            <apex:commandButton value="Navigate to Particular Page Id" action="{!GOTOID}" />
+            </apex:pageBlockSection>     
+        
+            <apex:pageBlockSection columns="1" title="Pass Values from VF to Controller">
+            <apex:selectList value="{!selactype}"  multiselect="false" size="1" label="Select the Account Type"> 
+                    <apex:selectOptions value="{!actype}" />                     
+                </apex:selectList>
+                <apex:commandButton value="Search" action="{!accsearch}" />
+                             
+                <apex:pageBlockTable value="{!a_sel}" var="ACC" rendered="{!srenderr}">
+                    <apex:column value="{!ACC.Id}"/>
+                    <apex:column value="{!ACC.Name}"/>
+                    <apex:column value="{!ACC.Type}"/>
+                    <apex:column value="{!ACC.Industry}"/>
+                    <apex:column value="{!ACC.Phone}"/>
+                </apex:pageBlockTable> 
+         	</apex:pageBlockSection>
+        
+            
+         </apex:pageBlock>   
+            
+            
+        
+        </apex:form>
+</apex:page>

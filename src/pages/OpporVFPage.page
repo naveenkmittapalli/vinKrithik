@@ -1,0 +1,76 @@
+<apex:page controller="OpporVFPagCtrl" sidebar="false" showHeader="false">
+    <apex:pageBlock >
+    <apex:tabPanel >
+    	<apex:tab label="Closed Won">
+            <apex:pageBlockTable value="{!o1}" var="A">
+                <apex:column value="{!A.Name}"/>
+                <apex:column value="{!A.Account.Name}"/>
+                <apex:column value="{!A.Amount}"/>
+                <apex:column value="{!A.CloseDate}"/>
+                <apex:column value="{!A.StageName}"/>           
+            </apex:pageBlockTable>        
+        </apex:tab>
+        
+        <apex:tab label="Qualification">
+        	<apex:pageBlockTable value="{!o2}" var="A">
+                <apex:column value="{!A.Name}"/>
+                <apex:column value="{!A.Account.Name}"/>
+                <apex:column value="{!A.Amount}"/>
+                <apex:column value="{!A.CloseDate}"/>
+                <apex:column value="{!A.StageName}"/>           
+            </apex:pageBlockTable>        
+        </apex:tab>
+        
+        <apex:tab label="Value Proposition">
+            <apex:pageBlockTable value="{!o3}" var="A">
+                <apex:column value="{!A.Name}"/>
+                <apex:column value="{!A.Account.Name}"/>
+                <apex:column value="{!A.Amount}"/>
+                <apex:column value="{!A.CloseDate}"/>
+                <apex:column value="{!A.StageName}"/>           
+            </apex:pageBlockTable>
+        </apex:tab>
+        
+        <apex:tab label="Perception Analysis">
+        	<apex:pageBlockTable value="{!o4}" var="A">
+                <apex:column value="{!A.Name}"/>
+                <apex:column value="{!A.Account.Name}"/>
+                <apex:column value="{!A.Amount}"/>
+                <apex:column value="{!A.CloseDate}"/>
+                <apex:column value="{!A.StageName}"/>           
+            </apex:pageBlockTable>   
+        </apex:tab>
+        
+        <apex:tab label="Prospecting">>
+            <apex:pageBlockTable value="{!o5}" var="A">
+                <apex:column value="{!A.Name}"/>
+                <apex:column value="{!A.Account.Name}"/>
+                <apex:column value="{!A.Amount}"/>
+                <apex:column value="{!A.CloseDate}"/>
+                <apex:column value="{!A.StageName}"/>           
+            </apex:pageBlockTable>        
+        </apex:tab>
+        
+        <apex:tab label="Negotiation/Review">
+            <apex:pageBlockTable value="{!o6}" var="A">
+                <apex:column value="{!A.Name}"/>
+                <apex:column value="{!A.Account.Name}"/>
+                <apex:column value="{!A.Amount}"/>
+                <apex:column value="{!A.CloseDate}"/>
+                <apex:column value="{!A.StageName}"/>           
+            </apex:pageBlockTable>       
+        </apex:tab>
+        
+        <apex:tab label="Id. Decision Makers">
+            <apex:pageBlockTable value="{!o7}" var="A">
+                <apex:column value="{!A.Name}"/>
+                <apex:column value="{!A.Account.Name}"/>
+                <apex:column value="{!A.Amount}"/>
+                <apex:column value="{!A.CloseDate}"/>
+                <apex:column value="{!A.StageName}"/>           
+            </apex:pageBlockTable>        
+        </apex:tab>
+        
+    </apex:tabPanel>
+        </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,15 @@
+<aura:component implements="force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name = "var1" type="String" default="Naveen" />
+    <aura:attribute name = "var2" type="String" default="Kumar" />
+    <aura:handler name="init" action="{!c.sendEmail}" value="{!this}" />
+     <!--   
+    <aura:if isTrue="{! (v.var1 == 'Naveen1')}">
+    <aura:if isTrue="{!(v.var2 == 'Kumar')}">
+        <lightning:button variant="brand" label="isValid" title="Brand action" onclick="{! c.isValid }" />   
+	
+    </aura:if>
+</aura:if> -->
+    
+    
+	
+</aura:component>

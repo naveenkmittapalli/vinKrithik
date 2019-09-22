@@ -1,0 +1,24 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <div class="slds-p-around_small">
+    <h1 class= "red"> I am in Lightning Component Header
+    </h1>
+    <div class= "bgyellow">
+    	I am in Div tag
+    </div>
+    <p> I am in Para tag
+    </p>
+        </div>
+    
+    <aura:attribute name="accept" type="List" default="['.jpg', '.jpeg']"/>
+    <aura:attribute name="multiple" type="Boolean" default="true"/>
+    <aura:attribute name="disabled" type="Boolean" default="false"/>
+
+    <lightning:fileUpload  name="fileUploader"
+                           label= "Demo Upload"
+                           multiple="{!v.multiple}"
+                           accept="{!v.accept}"
+                           disabled="{!v.disabled}"
+                           recordId="abcd"
+                           onuploadfinished="{! c.handleUploadFinished }"/>
+	
+</aura:component>

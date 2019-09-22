@@ -1,0 +1,18 @@
+<aura:component >
+    
+    <c:HeaderComponent TagLine = 'Finest Quality at Affordable Prices'
+                       Message = 'All Rights Reserved @2019'/>
+    
+    <!-- Register the Component Event here -->
+    <aura:registerEvent name = "SearchText" type = "c:SearchEvent" />
+    <div class="slds-p-around_small">    
+        <lightning:input
+        name="inline-search-input"
+        label="Search Beer"
+        type="search"
+        variant="label-hidden"
+        aura:id = "beerSearch"
+    	/>
+        <lightning:button label="Search" variant="Brand" onclick = "{!c.passSearchText}"/>
+    </div>	
+</aura:component>

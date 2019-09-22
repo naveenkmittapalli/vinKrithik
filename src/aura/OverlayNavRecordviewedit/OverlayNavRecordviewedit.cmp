@@ -1,0 +1,42 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="disabled" type="boolean" default="false" />
+    <br></br>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:button name="modal" label="Show Modal" onclick="{!c.handleShowModal}"/>
+    <br></br>
+    <lightning:navigation aura:id="navService"/>  
+    <lightning:button label="Navigate" onclick="{!c.handleClick}"/>
+    
+    <br></br>
+    <lightning:navigation aura:id="navService1"/>
+    <lightning:button label="NavigatetoLightnComp" onclick="{!c.NavigatetoLightnComp}"/>
+    <br></br>
+    Example for Record View Form
+    <br></br>
+    <lightning:recordViewForm recordId="{!v.recordId}" objectApiName="Account" >
+        <div class="slds-box">
+            <lightning:outputField fieldName="Name" />  
+        </div>
+    </lightning:recordViewForm>
+    <br></br>
+    
+    Example for Record Edit Form
+    <br></br>
+    <lightning:recordEditForm
+            onload="{!c.handleLoad}"
+            onsubmit="{!c.handleSubmit}"
+            onsuccess="{!c.handleSuccess}"
+            recordId="{!v.recordId}"
+            objectApiName="Account">
+            <!-- the messages component is for error messages -->
+            <lightning:messages />
+
+            <lightning:inputField fieldName="Name" />      
+            <div class="slds-m-top_medium">
+                <lightning:button disabled="{!v.disabled}" variant="brand" type="submit" name="save" label="Save" />
+            </div>
+        </lightning:recordEditForm>
+    
+
+	
+</aura:component>

@@ -1,0 +1,39 @@
+<aura:component implements="force:hasSobjectName,flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSobjectName"                            
+                			controller = "LcontactApex" 
+                            access="global" >
+    
+    
+    <c:LQuickContact accntId = "{!v.recordId}"/>
+    <aura:handler name="init" value = "{!this}" action = "{!c.doInit}" />
+    
+    <aura:attribute name = "contactList" type = "Contact[]" />
+    <aura:attribute name = "varMap" type = "map" />
+    <!--
+    <lightning:button label = "Generate Map" onclick = "{!c.genMap}" />
+    <aura:iteration items = "{!v.varMap}" var = "item" >
+        Key :: {!item.key} and Value :: {!item.value} <br/>    
+    </aura:iteration>
+    -->
+    
+    <!--<lightning:button label = "Get Contacts" onclick = "{!c.doInit}" /><br/> -->
+    <div class="slds-p-around_small">
+    <div class="slds-grid slds-wrap"> 		
+    	<aura:iteration items = "{!v.contactList}" var = "contact" >
+        	<div class="slds-col slds-size_1-of-3 slds-p-around_small" >
+         		<lightning:card footer="{!contact.Id}" title="{!contact.LastName}" iconName= "standard:contact">    
+             	<aura:set attribute="actions" >
+                	<lightning:button value = "{!contact.Id}" label = "View Details" variant = "brand" onclick = "{!c.doRedirect}" /> 	
+            	</aura:set>
+        		<p class="slds-p-horizontal_small">
+         		   	FirstName :::: {!contact.FirstName} <br/>
+            		Email :::: {!contact.Email} <br/>            
+        		</p>
+    			</lightning:card>
+             </div>
+        <!-- Conatct Id is {!contact.Id} and Last Name is {!contact.LastName} <br/>     -->
+     	
+        </aura:iteration>        
+  	</div>
+    </div>
+    
+</aura:component>

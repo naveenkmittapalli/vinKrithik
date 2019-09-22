@@ -1,0 +1,9 @@
+<aura:component >
+    <aura:attribute name="tabName" type="String" />
+    
+    <div class="top">
+    	{!v.tabName}
+  	</div>
+    
+	
+</aura:component>
