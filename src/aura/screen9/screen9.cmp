@@ -1,0 +1,93 @@
+<aura:component >
+    <!-- General Attributes -->
+    <aura:attribute name="yesNoOptions" type="List" default="[
+    {'label': 'Yes', 'value': 'Yes'},
+    {'label': 'No', 'value': 'No'}
+    ]"/>
+    
+    <!-- Page 9 Attributes -->
+    <aura:attribute name="p9q1value" type="String"/>
+    <aura:attribute name="p9q2value" type="String"/>
+    <aura:attribute name="p9q3value" type="String"/>
+    <aura:attribute name="p9q4value" type="Date"/>
+    <aura:attribute name="p9q5value" type="String"/>
+    <aura:attribute name="p9q6value" type="String"/>
+    <aura:attribute name="p9q7value" type="String"/>
+    <aura:attribute name="p9q8value" type="String"/>
+    <aura:attribute name="p9q9value" type="String"/>
+    
+    <!-- Next Event Registration -->
+    <aura:registerEvent name="screen9NextEvent" type="c:screen9NextEvent"/>
+    
+    <div class="slds-clearfix">
+                <div class="slds-float_right">
+    				<lightning:button value='nine' label='Back' variant = 'brand' onclick="{!c.processBack}" />
+  				</div>
+                <br></br>
+                <br></br>
+    
+    1. Does your child care program's location meet the space requirements?
+    <lightning:radioGroup name="p9Q1"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p9q1value}"
+                          type="radio"/>
+    <br></br>
+    
+    
+        <lightning:input type="String" name="input1" label="2. If not, how do you propose to meet these requirements" 
+                         value="{!v.p9q2value}"/>
+    <br></br>
+    3. Do you have a tentative date to open your proposed program?
+    <lightning:radioGroup name="p9Q3"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p9q3value}"
+                          type="radio"/>
+    
+    <br></br>
+    
+    <lightning:input type="Date" name="input1" label="4. If so, when?" value="{!v.p9q4value}"/>
+    <br></br>
+    
+    <lightning:input type="String" name="input1" label="5. How many children and what ages do you plan to serve?" value="{!v.p9q5value}"/>
+    <br></br>
+    
+    <lightning:input type="String" name="input1" label="6. What are your proposed hours of operation?" value="{!v.p9q6value}"/>
+    <br></br>    
+        
+    7. Will your program include a standardized curriculum?
+    <lightning:radioGroup name="p9Q7"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p9q7value}"
+                          type="radio"/>
+        
+        
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <lightning:input type="String" name="input1" label="If yes, please indicate:" value="{!v.p9q8value}"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <lightning:input type="String" name="input1" label="If no, please provide a brief description of your program:" value="{!v.p9q9value}"/>
+    
+    <br></br>
+    <br></br>
+       
+				<aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">    	 
+        	<div class="slds-float_right">              
+            	<lightning:button value='nine' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+            	<lightning:button value='nine' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" />
+            	<lightning:button value='nine' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />        
+    		</div>
+        </aura:if>
+        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">    	
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='nine' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='nine' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" /> 
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='nine' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />            	
+        	</div>
+    	</aura:if>
+       		</div>
+	
+</aura:component>

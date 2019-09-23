@@ -1,0 +1,104 @@
+<aura:component >
+    <!-- General Attributes -->
+    <aura:attribute name="yesNoOptions" type="List" default="[
+    {'label': 'Yes', 'value': 'Yes'},
+    {'label': 'No', 'value': 'No'}
+    ]"/>
+    
+    <aura:attribute name="p8Q2Options" type="List" default="[
+    {'label': 'Personal Savings', 'value': 'Personal Savings'},
+    {'label': 'Line of Credit', 'value': 'Line of Credit'},
+	{'label': 'Business Loan', 'value': 'Business Loan'},
+	{'label': 'Other', 'value': 'Other'}
+    ]"/>
+    
+    <!-- Page 8 Attributes -->
+    <aura:attribute name="p8q1value" type="String"/>
+    <aura:attribute name="p8q2value" type="String"/>
+    <aura:attribute name="p8q3value" type="String"/>
+    <aura:attribute name="p8q4value" type="Date"/>
+    <aura:attribute name="p8q5value" type="String"/>
+    <aura:attribute name="p8q6value" type="String"/>
+    <aura:attribute name="p8q7value" type="String"/>
+    
+    <aura:attribute name="pStatus" type="String"/>
+    
+    <!-- Next Event Registration -->
+    <aura:registerEvent name="screen8NextEvent" type="c:screen8NextEvent"/>
+    
+    <div class="slds-clearfix">
+                <div class="slds-float_right">
+    				<lightning:button value='eight' label='Back' variant = 'brand' onclick="{!c.processBack}" />
+  				</div>
+                <br></br>
+                <br></br>
+        <div class="top">
+        It is expected that child care center owners/operators have access to at least six month's operating expenses. All potential child care center owner/operators are encouraged to work with Small Business Administration to receive assistance on a business plan that is feasible.
+        </div>
+            <br></br>
+        <br></br>
+    1. Do you have a business plan?
+    <lightning:radioGroup name="p8Q1"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p8q1value}"
+                          type="radio"/>
+    <br></br>
+        <lightning:input type="Date" name="input1" label="If yes, please attach a copy. If no, have you made an appointment with the Small Business Administration? Date:" 
+                         value="{!v.p8q2value}"/>
+    <br></br>
+    <br></br>
+        If not, please answer the following questions.
+    <br></br>
+    <br></br>
+    
+    2. How you plan to finance the construction/renovation of the proposed child care program?
+    <lightning:radioGroup name="p9Q3"
+                          label=""
+                          options="{!v.p8Q2Options}"
+                          value="{!v.p8q3value}"
+                          type="radio"/>
+        <lightning:input name="input1" label="" value="{!v.p8q4value}"/>    
+    <br></br>
+    3. How you plan to finance the initial purchase of equipment, materials and supplies?
+    <lightning:radioGroup name="p9Q4"
+                          label=""
+                          options="{!v.p8Q2Options}"
+                          value="{!v.p8q5value}"
+                          type="radio"/>
+        <lightning:input name="input1" label="" value="{!v.p8q6value}"/>    
+    <br></br>
+    
+    4. Do you have access to sufficient funds equal to at least six month's  operating expenses?
+    <lightning:radioGroup name="p8Q5"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p8q7value}"
+                          type="radio"/>
+    <br></br>
+        An initial license will not be issued if access to funds are not available and verified. Consumer credit cards/accounts are not an acceptable form of financing.
+    
+    <br></br>
+    <br></br>
+       
+				<aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">    	 
+        	<div class="slds-float_right">              
+            	<lightning:button value='eight' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+            	<lightning:button value='eight' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" />
+            	<lightning:button value='eight' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />        
+    		</div>
+        </aura:if>
+        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">    	
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='eight' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='eight' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" /> 
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='eight' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />            	
+        	</div>
+    	</aura:if>
+       		</div>
+	
+</aura:component>

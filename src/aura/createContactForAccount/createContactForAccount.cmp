@@ -1,0 +1,20 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" 
+                controller = "createContactForAccountApex" >
+
+    
+    <aura:attribute name="recId" type="String" access="public"/>
+    <aura:attribute name="firstName" type="String" access="public"/>
+    <aura:attribute name="lastName" type="String" access="public"/>
+    <!-- {!v.recordId} -->
+    
+   <lightning:input type="String" name="firstName" label="First Name" value="{!v.firstName}" required="true" /> <br></br>
+   <lightning:input type="String" name="lastName" label="Lasst Name" value="{!v.lastName}" required="true" /><br></br>
+   
+     <lightning:button value="Create Contact" label= "Create Contact" onclick="{!c.createContact}" variant = "brand" /><br></br>
+   
+    
+    
+    
+            
+	
+</aura:component>

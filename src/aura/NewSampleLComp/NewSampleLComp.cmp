@@ -1,0 +1,60 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller = "NewSampleLCompControllerapex">
+    <aura:attribute name="wholeNumber" type="Integer" access="public"/>
+    <aura:attribute name="percentage" type="Integer" access="public"/>
+    <aura:attribute name="answer" type="boolean" default="false" access="public"/>
+    <aura:attribute name="result" type="Integer" access="public"/>
+    <aura:attribute name = "arrayEx" type = "String[]" default="['red','green','yellow']" />
+    <aura:attribute name = "MapEx" type = "Map" access="public"/>
+    <aura:attribute name = "contactList" type = "Contact[]" access="public" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name = "firstName" type = "String" access="public"/>
+    <aura:attribute name = "lastName" type = "String" access="public"/>
+    
+    <!--
+    <div class="slds-p-around_xx-large">
+        <lightning:input type="number" name="input1" label="Enter First Number" value="{!v.wholeNumber}" class="red" required="true"/>
+        <lightning:input type="number" name="input2" label="Enter Second Number" value="{!v.percentage}" class="red" required="true"/>
+         <lightning:input type="number" name="input6" label="Percentage %" value="{!v.percentage}"  formatter="percent-fixed"  required="true"/>
+    <br></br>
+        <lightning:button value="Add" label= "Add" onclick="{!c.doAdd}" variant = "brand" />
+        <lightning:button value="Subtract" label= "Subtract" onclick="{!c.doSubtract}" variant = "brand"/>
+        <lightning:button value="Multiply" label= "Multiply" onclick="{!c.doMultiply}" variant = "brand"/>
+        <lightning:button value="Divide" label= "Divide" onclick="{!c.doDivide}" variant = "brand"/>
+    <br></br>
+        <aura:if isTrue="{!v.answer}">
+     Answer is {!v.result}    
+    </aura:if>
+        
+        
+        <br></br>
+        <lightning:button value="Create Map" label= "Create Map" onclick="{!c.createMap}" variant = "brand" />
+        <aura:iteration items="{!v.MapEx}" var="item">
+            <br/>Key {!item.key} value is {!item.value} 
+    	</aura:iteration>
+        </div> -->
+    Create Contact for This Account
+    <lightning:input type="String" name="firstName" label="First Name" value="{!v.firstName}" required="true" /> <br></br>
+    <lightning:input type="String" name="lastName" label="First Name" value="{!v.lastName}" required="true" /><br></br>
+    <lightning:button value="Create Contact" label= "Create Contact" onclick="{!c.createContact}" variant = "brand" /><br></br>
+    
+    
+    
+    <div class="slds-grid slds-wrap">
+        <aura:iteration items="{!v.contactList}" var="item">
+        <div class="slds-col slds-size_1-of-3 slds-p-around_small">    
+            <lightning:card footer="{!item.Id}" title="{!item.FirstName}" iconName="standard:contact">
+        <aura:set attribute="actions">
+            <lightning:button label="View Details" variant = "brand" onclick = "{!c.doRedirect}" value = "{!item.Id}"/>
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            First Name :: {!item.FirstName}<br></br>
+            Last Name :: {!item.LastName}
+        </p>
+    </lightning:card>
+             </div>
+    	</aura:iteration>
+       
+    </div>
+	
+    
+</aura:component>

@@ -1,0 +1,19 @@
+<apex:page controller="WrpClsVFCtrl" sidebar="false" showHeader="false">
+    <apex:form >
+    	<apex:pageBlock >
+        	<apex:pageBlockTable value="{!wrpClsLst}" var="A" id="TABLE">
+                <apex:column headerValue="Update">
+                    <apex:inputCheckbox value="{!A.needupdate}"/>
+                </apex:column>
+                <apex:column value="{!A.acctoupdate.Name}"/>
+                <apex:column value="{!A.acctoupdate.Type}"/>
+                <apex:column value="{!A.acctoupdate.Industry}"/>
+                <apex:column value="{!A.acctoupdate.Phone}"/>
+                <apex:inlineEditSupport />
+            
+            </apex:pageBlockTable>
+            <apex:commandButton value="Update" action="{!Save}" reRender="TABLE"/>
+        </apex:pageBlock>
+    
+    </apex:form>
+</apex:page>

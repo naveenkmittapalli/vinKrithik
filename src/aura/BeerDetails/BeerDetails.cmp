@@ -1,0 +1,16 @@
+<aura:component  implements="lightning:isUrlAddressable">
+    <aura:attribute name="beerId" type = "String" />
+    <aura:attribute name="beerRecord" type="Object"/>
+    <lightning:navigation aura:id="navigateToOrder"/>
+    	<div class= "slds-p-around_small">    
+        	<lightning:recordForm
+        		recordId="{!v.beerId}"
+       			objectApiName="Beer__c"
+        		layoutType="Full"
+                columns = "2"
+        		mode="readonly" />
+    	</div>
+    <div class= "slds-p-around_small">
+        <lightning:button label = "Order Now" variant = "brand" onclick = "{!c.doOrder}" /> 	
+    </div>
+</aura:component>

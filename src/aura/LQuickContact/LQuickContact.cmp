@@ -1,0 +1,20 @@
+<aura:component access="global" controller = "LQuickContactApex" >
+    
+    <aura:attribute name = "accntId" type = "String" />
+    <aura:attribute name = "newcontact" type = "Contact" default = "{sobjectName : 'Contact',
+                                                                    FirstName : '',
+                                                                    LastName : '',
+                                                                    Email : '',
+                                                                    Phone : ''
+                                                                    }"/>
+     
+    <div>
+        <lightning:input type="test" value="{!v.newcontact.FirstName}" label = "Last Name" title="Last Name" Required = "true" />
+        <lightning:input type="text" value="{!v.newcontact.LastName}" label = "First Name" title="First Name" Required = "true" />
+        <lightning:input type="Email" value="{!v.newcontact.Email}" label = "Email"  title= "Email" Required = "true"/>
+        <lightning:input type="Phone" value="{!v.newcontact.Phone}" label = "Phone"  title= "Phone" Required = "true"/>
+    </div>
+    
+    <lightning:button variant="brand" label="Create New Contact" title="Create New Contact" onclick="{!c.addContact }" /> 
+	
+</aura:component>

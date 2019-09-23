@@ -1,0 +1,21 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name = "Wholenumber" type = "integer" access = "public" />
+    <aura:attribute name = "Divisor" type = "integer" access = "public" />
+    <aura:attribute name = "Result" type = "integer" access = "public" />
+    <aura:attribute name = "actionPerformed" type = "string" access = "public" />
+    <aura:attribute name = "colorCoding" type = "Map" default = "{red: '1111', blue : '2222', yellow : '3333'}" />
+    
+    <div class="slds-p-around_xxx-small">
+    <div class = "style1">
+    	<lightning:input type="number" name="input1" label="Enter First Number" aura:id = "firstNum"/><br/>
+    	<lightning:input type="number" name="input1" label="Enter Second Number" aura:id = "secondNum" />    <br/> 
+    </div>
+        </div>
+    <lightning:button variant="brand" label="Addition" title="Addition" onclick="{!c.add }" /> <br/>
+    <lightning:button variant="brand" label="Subtraction" title="Addition" onclick="{! c.sub }" /> <br/>
+    <lightning:button variant="brand" label="Multiplication" title="Addition" onclick="{!c.mul }" /> <br/>
+    <lightning:button variant="brand" label="Division" title="Addition" onclick="{!c.div }" /> <br/>
+    
+    {!v.actionPerformed} <br/>
+    The Output is {!v.Result} <br/>
+</aura:component>

@@ -1,0 +1,87 @@
+<aura:component >
+    <!-- General Attributes -->
+    <aura:attribute name="yesNoOptions" type="List" default="[
+    {'label': 'Yes', 'value': 'Yes'},
+    {'label': 'No', 'value': 'No'}
+    ]"/>
+   
+   <!-- Page 11 Attributes -->
+    <aura:attribute name="p11q1value" type="String"/>
+    <aura:attribute name="p11q2value" type="String"/>
+    <aura:attribute name="p11q3s1value" type="String"/>
+    <aura:attribute name="p11q3s2value" type="Date"/>
+    <aura:attribute name="p11q4value" type="String"/>
+    
+    <!-- Next Event Registration -->
+    <aura:registerEvent name="screen11NextEvent" type="c:screen11NextEvent"/>
+    
+    
+            <div class="slds-clearfix">
+                <div class="slds-float_right">
+    				<lightning:button value='eleven' label='Back' variant = 'brand' onclick="{!c.processBack}" />
+  				</div>
+                <br></br>
+                <br></br>
+    
+    1. Have you applied for a business registration?
+    <lightning:radioGroup name="p11Q1"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p11q1value}"
+                          type="radio"/>
+    <br></br>
+    <br></br>
+    
+    
+    2. What type of organization is proposed?
+    <lightning:radioGroup name="p11Q2"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p11q2value}"
+                          type="radio"/>
+    
+    <br></br>
+    <br></br>
+    3. Have you filed this business with the Secretary of State's Office?
+    <lightning:radioGroup name="p11Q3"
+                          label=""
+                          options="{!v.yesNoOptions}" 
+                          value="{!v.p11q3s1value}"
+                          type="radio"/>
+    <aura:if isTrue="{!v.p11q3s1value eq 'Yes'}">
+    	<lightning:input type="date" name="input1" label="Date" value="{!v.p11q3s2value}"/>
+    </aura:if>
+    
+    <br></br>
+    <br></br>
+    4. Are you in compliance with the zoning laws of your city or county? 
+    <lightning:radioGroup name="p11Q4"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p11q4value}"
+                          type="radio"/>
+    
+    <br></br>
+				<aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">    	 
+        	<div class="slds-float_right">              
+            	<lightning:button value='eleven' label='Save' variant = 'brand' onclick="{!c.processSave}" />  
+            	<lightning:button value='eleven' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" />
+            	<lightning:button value='eleven' label='Save and Submit' variant = 'brand' onclick="{!c.processSave}" />        
+    		</div>
+        </aura:if>
+        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">    	
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='eleven' label='Save' variant = 'brand' onclick="{!c.processSave}" />  
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='eleven' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" /> 
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='eleven' label='Save and Submit' variant = 'brand' onclick="{!c.processSave}" />            	
+        	</div>
+    	</aura:if>
+       		</div>
+            
+            
+	
+</aura:component>

@@ -1,0 +1,101 @@
+<aura:component controller = "Contactlist">
+    <aura:attribute name = "whom" type="string" access="public" default = "Naveen" /> 
+    <aura:attribute name = "Age" type = "Integer" access="public" default = "20"/>
+    <aura:attribute name = "saccount" type = "Account" access="public" />
+    <aura:attribute name = "AColorpallete" type = "string[]" access="public" default = "['red', 'blue']" />
+    <aura:attribute name = "LColorpallete" type = "list" access="public" default = "['red', 'blue']" />
+    <aura:attribute name = "SColorpallete" type = "set" access="public" default = "['red', 'blue']" />
+    <aura:attribute name = "MColorpallete" type = "map" access="public" default = "{r:'red', b:'blue'}" />
+    
+    <aura:attribute name = "Result" type = "Integer" access="public" />
+    <aura:attribute name = "truthy" type = "boolean" access="public" default="false"/>
+    
+    <aura:attribute name = "Mapcheck" type = "list" access="public" />
+    
+    <aura:attribute name = "Contactlist" type = "Contact[]" access="public" />
+    
+    Welcome {!v.whom}, Age is {!v.Age}, Color is {!v.AColorpallete[0]} , {!v.LColorpallete[1]}
+    <br></br>
+    <br></br>
+    <lightning:input aura:id="testInput" label="Enter new Age" />
+    <lightning:button variant="brand" label="isValid" title="Brand action" onclick="{! c.isValid }" />
+    <lightning:button variant="brand" label="getName" title="Brand action" onclick="{! c.getName }" />
+    <lightning:button variant="brand" label="getAttribute" title="Brand action" onclick="{! c.getAttribute }" />
+    <lightning:button variant="brand" label="setAttribute" title="Brand action" onclick="{! c.setAttribute }" />
+    <lightning:button variant="brand" label="AURAIDUSAGE" title="Brand action" onclick="{! c.AURAIDUSAGE }" />
+    <br></br>
+    <br></br>
+    Welcome to Calculator Utility 
+    <br></br>
+    <br></br>
+    <lightning:input aura:id="Input1" label="Enter First Number" />
+    <lightning:input aura:id="Input2" label="Enter Second Number" />
+    <lightning:button variant="brand" label="Add" title="Brand action" onclick="{! c.Add }" />
+    <lightning:button variant="brand" label="Subtract" title="Brand action" onclick="{! c.Subtract }" />
+    <lightning:button variant="brand" label="Multiply" title="Brand action" onclick="{! c.Multiply }" />
+    <lightning:button variant="brand" label="Divide" title="Brand action" onclick="{! c.Divide }" />
+    
+    <br></br>
+    <br></br>
+    Answer is {!v.Result}    
+    
+    <br></br>
+    <br></br>
+  
+    Example for Aura:if <br></br>
+    <aura:if isTrue="{!v.truthy}">
+    	True
+    <aura:set attribute="else">
+      	False
+    </aura:set>
+    </aura:if> 
+    
+    <br></br>
+    <br></br>
+    
+    Example for Iteration:  <br></br>
+    <aura:iteration items="{!v.AColorpallete}" var="item">
+        "{!item}"  <br/>
+    </aura:iteration>
+    
+    <br></br>
+    <br></br>
+    Example for Map:  <br></br>
+    <lightning:button variant="brand" label="CreateMap" title="Brand action" onclick="{! c.CreateMap }" />
+    <br></br>
+    <aura:iteration items="{!v.Mapcheck}" var="item">
+        Key is {!item.key}  Value is {!item.value}<br/>
+    </aura:iteration>
+    
+    <br></br>
+    <br></br>
+    Example for Init Handler and Server Controller: <br></br>
+    <aura:handler name="init" value = "{!this}" action = "{! c.Contacts }" />
+    <br></br>
+    
+    <div class="slds-m-horizontal_small">
+     <div class="slds-grid slds-wrap">
+     <aura:iteration items="{!v.Contactlist}" var="item">  
+     <div class="slds-col slds-size_1-of-3 slds-m-horizontal_small">    
+     <lightning:card footer="{!item.Phone}" title="{!item.Name}" iconName = "action:user">
+        {!item.Name} <br></br>
+        {!item.Phone} <br></br>
+        {!item.Email}  <br></br>
+        <aura:set attribute="actions">
+            <lightning:button label="View Details" variant="brand"/>
+        </aura:set>
+        
+    </lightning:card>
+      </div>
+
+        </aura:iteration>
+         </div>
+        </div>
+    
+    
+        
+    
+
+
+	
+</aura:component>

@@ -1,0 +1,15 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="V1" type="string" default="Vineela"/>
+    <aura:attribute name="V2" type="string" default="32"/>
+    <aura:handler event="c:appevent" action="{!c.appevent}" />
+    
+    <br></br>
+    <br></br>
+    <br></br>
+    {!v.V1}
+    <br></br>
+    <br></br>
+    {!v.V2}
+	
+</aura:component>

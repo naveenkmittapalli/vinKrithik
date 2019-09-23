@@ -1,0 +1,6 @@
+<apex:page controller="restVfpageCtrler">
+    
+   <apex:form >
+    <apex:commandButton value="" action="{!callRestApi}"/>
+       </apex:form> 
+</apex:page>

@@ -1,0 +1,16 @@
+<aura:component controller = "relcontacts" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+   
+    <aura:attribute name="FirstName" type="string" access="public"/>
+    <aura:attribute name="LastName" type="string" access="public"/>
+    <aura:attribute name="Phone" type="string" access="public"/>
+    <aura:attribute name="Email" type="string" access="public"/>
+    
+    Enter the Below Details:<br></br>
+    <lightning:input type="string" value = "{!v.FirstName}" label = "First Name" required="true"/> <br></br>
+    <lightning:input type="string" value = "{!v.LastName}" label = "Last Name" required="true"/> <br></br>
+    <lightning:input type="Phone" value = "{!v.Phone}" label = "Phone" required="true"/> <br></br>
+    <lightning:input type="email" value = "{!v.Email}" label = "Email" required="true"/> <br></br>
+    
+    <lightning:button label="Create Contact" variant="brand" name="{!v.recordId}" onclick = "{!c.SaveContact}"/>
+	
+</aura:component>

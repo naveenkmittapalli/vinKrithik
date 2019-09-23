@@ -1,0 +1,6 @@
+<apex:page controller="Page2VFCtrl">
+    
+    Value 1 Passed from Prev VF Page is :::::: "{!inptext1}" <br/>
+    Value 2 Passed from Prev VF Page is :::::: "{!inptext2}" <br/>
+    Value 3 Passed from Prev VF Page is :::::: "{!inptext3}" <br/>
+</apex:page>

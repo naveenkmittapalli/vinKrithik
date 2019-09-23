@@ -1,0 +1,81 @@
+<aura:component >
+    <!-- General Attributes -->
+    <aura:attribute name="yesNoOptions" type="List" default="[
+    {'label': 'Yes', 'value': 'Yes'},
+    {'label': 'No', 'value': 'No'}
+    ]"/>
+    
+    <!-- Page 10 Attributes -->
+    <aura:attribute name="p10q1value" type="String"/>
+    <aura:attribute name="p10q2value" type="String"/>
+    <aura:attribute name="p10q3value" type="String"/>
+    <aura:attribute name="p10q4value" type="String"/>
+    
+    <!-- Next Event Registration -->
+    <aura:registerEvent name="screen10NextEvent" type="c:screen10NextEvent"/>
+    
+    <div class="slds-clearfix">
+                <div class="slds-float_right">
+    				<lightning:button value='ten' label='Back' variant = 'brand' onclick="{!c.processBack}" />
+  				</div>
+                <br></br>
+                <br></br>
+    
+    1. Are you currently a home child care provider?
+    <lightning:radioGroup name="p10Q1"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p10q1value}"
+                          type="radio"/>
+    <br></br>
+    <br></br>
+    
+    
+    2. Are you currently or have you ever operated a child care center or facility?
+    <lightning:radioGroup name="p10Q2"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p10q2value}"
+                          type="radio"/>
+    
+    <br></br>
+    <br></br>
+    3. Have you or a potential employee ever been convicted of a crime?
+    <lightning:radioGroup name="p10Q3"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p10q3value}"
+                          type="radio"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If yes, please be aware that there are criminal convictions which, due to WV law, prohibit certain individuals from working in child care.
+    
+    <br></br>
+    <br></br>
+        4. Have you or a potential employee ever been the subject of a child or adult abuse/neglect investigation? 
+    <lightning:radioGroup name="p10Q4"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p10q4value}"
+                          type="radio"/>
+    
+    <br></br>
+				<aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">    	 
+        	<div class="slds-float_right">              
+            	<lightning:button value='ten' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+            	<lightning:button value='ten' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" />
+            	<lightning:button value='ten' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />        
+    		</div>
+        </aura:if>
+        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">    	
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='ten' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='ten' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" /> 
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='ten' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />            	
+        	</div>
+    	</aura:if>
+       		</div>
+	
+</aura:component>

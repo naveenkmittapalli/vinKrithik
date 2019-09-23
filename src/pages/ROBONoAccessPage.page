@@ -1,0 +1,9 @@
+<apex:page standardController="Contact" extensions="ROBONoAccessPageCtrl">
+    <apex:form > 
+        <p>
+            This Action is not permitted
+        </p>
+    
+    	<apex:commandButton value="Close" action="{!ReturnToContact}"/>
+    </apex:form> 
+</apex:page>

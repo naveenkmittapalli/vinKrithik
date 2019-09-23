@@ -1,0 +1,54 @@
+<apex:page >
+
+<style>
+.newLink {color:blue} 
+</style>
+
+<style>
+.continue {color:white !important;
+           background:blue !important;
+           height:30px !important;
+           border-radius:9px !important;
+           width:100px !important;
+           text-align:center !important;
+           font-size: 20px !important;
+           position: absolute !important;
+           right:    0 !important;
+           bottom:   0 !important;}
+           
+   .cancel {color:white !important;
+           background:red !important;
+           height:30px !important;
+           border-radius:9px !important;
+           width:100px !important;
+           text-align:center !important;
+           font-size: 20px !important;
+           position: absolute !important;
+           left:    120 !important;
+           bottom:   0 !important;}
+           
+           
+</style>
+
+<style type="text/css">
+.myClass{
+padding-right: 30px !important;
+color:black !important;
+background:grey !important;
+font-size: 50px !important;
+left:    60 !important;
+text-align:center !important;
+}
+</style>
+
+
+<apex:form >
+<apex:stylesheet value="{!$Resource.Stylesheet}" />
+     
+    <apex:outputText value="Select A Pershing Number" styleClass="myClass"/>
+    
+    <apex:commandButton value="Continue" styleClass="continue" />
+    <apex:commandButton value="Cancel" styleClass="cancel" />
+    </apex:form>
+
+</apex:page>

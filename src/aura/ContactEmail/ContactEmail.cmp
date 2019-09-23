@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" 
+                controller = "ContactEmailSend">
+    
+    <lightning:button name="Text Email to Contact" label="Text Email to Contact" onclick="{!c.EmailContactText}" />
+    <lightning:button name="HTML Email to Contact" label="HTML Email to Contact" onclick="{!c.EmailContactHTML}" />
+	
+</aura:component>

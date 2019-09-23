@@ -1,0 +1,11 @@
+<apex:page >
+  <apex:stylesheet value="{!$Resource.Stylesheet}" />
+  <h1> This is Naveen </h1>
+  
+  <apex:outputLink value="http://www.salesforce.com" styleClass="newLink">
+
+        Click here to switch to www.salesforce.com
+
+    </apex:outputLink>
+
+</apex:page>

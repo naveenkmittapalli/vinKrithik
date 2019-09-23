@@ -1,0 +1,93 @@
+<aura:component >
+    <!-- General Attributes -->
+    <aura:attribute name="yesNoOptions" type="List" default="[
+    {'label': 'Yes', 'value': 'Yes'},
+    {'label': 'No', 'value': 'No'}
+    ]"/>
+    
+    <!-- Page 5 Attributes -->
+    <aura:attribute name="p5q1options" type="List" default="[
+    {'label': 'Twenty-one (21) years of age', 'value': 'Twenty-one (21) years of age'},
+    {'label': 'GED or High School Diploma', 'value': 'GED or High School Diploma'},
+    {'label': '6 months experience in caring for children', 'value': '6 months experience in caring for children'},
+    {'label': 'Certified in CPR or completed First Aid training that included Rescued Breathing and First Aid for Choking', 'value': 'Certified in CPR or completed First Aid training that included Rescued Breathing and First Aid for Choking'},
+    {'label': 'No', 'value': 'No'},
+    
+    ]"/>
+    
+    <aura:attribute name="p5q2options" type="List" default="[
+    {'label': 'Completed 15 hours of training in child development;', 'value': 'Completed 15 hours of training in child development;'},
+    {'label': 'Possess a Child Development Associate (CEA) credential;', 'value': 'Possess a Child Development Associate (CEA) credential;'},
+    {'label': 'Completed the Child Care Apprenticeship Program (ACDS); or', 'value': 'Completed the Child Care Apprenticeship Program (ACDS);'},
+    {'label': 'Completed at least 3 college credit hours in child development or a related field.', 'value': 'Completed at least 3 college credit hours in child development or a related field.'},
+    ]"/>
+    
+   
+    <aura:attribute name="p5q1value" type="String"/>
+    <aura:attribute name="p5q2value" type="List"/>
+    <aura:attribute name="p5q3value" type="String"/>
+    <aura:attribute name="p5q4value" type="String"/>
+    <aura:attribute name="p5q5value" type="String"/>
+    
+    <!-- Next Event Registration -->
+    <aura:registerEvent name="screen5NextEvent" type="c:screen5NextEvent"/>
+    
+    <div class="slds-clearfix">
+		<div class="slds-float_right">
+    		<lightning:button value='five' label='Back' variant = 'brand' onclick="{!c.processBack}" />
+  		</div>
+                <br></br>
+                <br></br>      
+		1. Have you (or has the proposed Operator) met the following requirements? 
+    	<lightning:radioGroup name="p5Q1"
+                          label=""
+                          options="{!v.p5q1options}"
+                          value="{!v.p5q1value}"
+                          type="radio"/>
+        
+        
+		<br></br>
+        
+        <lightning:checkboxGroup name="p5Q2"
+                             label="2. Do you meet one of the following requirements? Select all that apply:"
+                             options="{!v.p5q2options}"
+                             value="{!v.p5q2value }"
+                             />
+    	
+        
+        <br></br>
+        3. Do you understand that you will be required to complete ongoing professional development and training?
+        
+    	<lightning:radioGroup name="p5Q3"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p5q3value}"
+                          type="radio"/>
+        <br></br>
+        <lightning:input name="p5q4" label="4. If you have attended training, please list the topics below." value="{!v.p5q4value}"/>
+        <br></br>
+        
+        <lightning:input name="p5q5" label="5. If these training requirements are not met, how do you plan to meet them?" value="{!v.p5q5value}"/>
+        <br></br>
+        <br></br>
+        <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">    	 
+        	<div class="slds-float_right">              
+            	<lightning:button value='five' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+            	<lightning:button value='five' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" />
+            	<lightning:button value='five' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />        
+    		</div>
+        </aura:if>
+        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">    	
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='five' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='five' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" /> 
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='five' label='Save and Continue' variant = 'brand' onclick="{!c.checkBrowser}" />            	
+        	</div>
+    	</aura:if>
+       		</div>
+	
+</aura:component>

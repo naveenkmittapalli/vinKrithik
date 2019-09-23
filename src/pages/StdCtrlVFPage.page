@@ -1,0 +1,39 @@
+<apex:page sidebar="false" showHeader="false" standardController="Account">
+    <apex:form >
+	<apex:pageBlock title="View Details of {!Account.Name}"> 
+            <apex:pageBlockSection title="View Details" columns="3">
+                Name: "{!Account.Name}"
+                Type: "{!Account.Type}"
+                Industry: "{!Account.Industry}"  
+            </apex:pageBlockSection>
+                       
+    </apex:pageBlock>   
+    <apex:pageBlock title="Edit Details of {!Account.Name}">
+    	<apex:pageBlockSection title="Edit Details" columns="3" collapsible="false">
+        	<apex:inputField value="{!Account.Name}"/>
+        	<apex:inputField value="{!Account.Type}"/>
+        	<apex:inputField value="{!Account.Industry}"/>
+        	<apex:commandButton value="Save Now" action="{!save}"/>          
+        </apex:pageBlockSection> 
+    </apex:pageBlock>
+        
+    <apex:pageBlock title="Details of {!Account.Name}">
+        <apex:pageBlockSection columns="1">
+    		<apex:detail relatedList="false" title="false" />
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>  
+    
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="1" title="Contact Related List  of {!Account.Name}">
+    		<apex:relatedList list="Contacts"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="1" collapsible="true" title="Opportunity Related List  of {!Account.Name}">
+    		<apex:relatedList list="Opportunities"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+</apex:page>

@@ -1,0 +1,21 @@
+<apex:page controller="vfController">
+<apex:includeLightning />    
+    
+    <div id="myDivId"> 
+    </div>
+ 
+    <script>
+        $Lightning.use("c:createContactForAccountApp", function() {
+        $Lightning.createComponent(
+            "c:createContactForAccount",
+            { recId: recId },
+            "myDivId",
+            function(cmp) {
+                console.log('component created');
+                console.log(cmp);
+            });
+        });
+     </script>
+ 
+    
+</apex:page>

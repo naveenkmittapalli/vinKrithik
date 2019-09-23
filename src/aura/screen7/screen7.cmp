@@ -1,0 +1,159 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" >
+    
+    <aura:attribute name="prevSection" type = "String" />
+    <aura:attribute name="currSection" type = "String" />
+    
+    <aura:attribute name="yesNoOptions" type="List" default="[
+    {'label': 'Yes', 'value': 'Yes'},
+    {'label': 'No', 'value': 'No'}
+    ]"/>
+    <aura:attribute name="p7s1q3Options" type="List" default="[
+    {'label': 'Regular', 'value': 'Regular'},
+    {'label': 'Provisional', 'value': 'Provisional'}
+    ]"/>
+    
+    <aura:attribute name="p7s1q1value" type="Date"/>
+    <aura:attribute name="p7s1q2value" type="String"/>
+    <aura:attribute name="p7s1q3value" type="String"/>
+    
+    <aura:attribute name="p7s2q1value" type="String"/>
+    <aura:attribute name="p7s2q2value" type="Date"/>
+    <aura:attribute name="p7s2q3value" type="String"/>
+    <aura:attribute name="p7s2q4value" type="Date"/>
+    
+    <aura:attribute name="p7s3q1value" type="String"/>
+    <aura:attribute name="p7s3q2value" type="String"/>
+    
+    <aura:attribute name="pStatus" type="String"/>
+    
+    <!-- Next Event Registration -->
+    <aura:registerEvent name="screen7NextEvent" type="c:screen7NextEvent"/>
+    
+    <!-- Init Handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    
+    <div class="slds-clearfix">
+        <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}"> 
+		<div class="slds-float_right">
+    		<lightning:button value='seven' label='Back' variant = 'brand' onclick="{!c.processBack}" />
+  		</div>
+        </aura:if>
+        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">    	
+        <div class="slds-align_absolute-center" style="height:3rem">
+        	<lightning:button value='seven' label='Back' variant = 'brand' onclick="{!c.processBack}" />
+  		</div>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.currSection == 'section1'}">
+    	<c:TabNameComponent tabName = "Fire Marshal Inspection:" />
+    </aura:if>
+    <aura:if isTrue="{!v.currSection == 'section2'}">
+    	<c:TabNameComponent tabName = "Health Department Inspection:" />
+    </aura:if>
+    <aura:if isTrue="{!v.currSection == 'section3'}">
+    	<c:TabNameComponent tabName = "Department of Agriculture Pest Management Plan:" />
+    </aura:if>
+                <br></br>
+                <br></br>   
+        <aura:if isTrue="{!v.currSection == 'section1'}">
+        	<div class="top"> 
+        	If you have not had a preliminary inspection or plan review, please call (304) 558-2191 to request one. You must submit the report with the submission of your application. No certificate or license to operate will granted if the State Fire Marshal has not given approval.
+            </div>
+            <br></br>
+        <br></br>
+       <lightning:input type = "date" name="p7s1q1" label="1. If you have not had a preliminary on-site inspection by the OSFM, what is the date of the preliminary inspection?" value="{!v.p7s1q1value}"/>
+        <br></br>
+        2. Have you recieved the fire marshal's report?       
+    	<lightning:radioGroup name="p7s1q2"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p7s1q2value}"
+                          type="radio"/>
+        <br></br>
+        3. Did you recieve a regular or provisional recommendation?       
+    	<lightning:radioGroup name="p7s1q3"
+                          label=""
+                          options="{!v.p7s1q3Options}"
+                          value="{!v.p7s1q3value}"
+                          type="radio"/>
+        <br></br>
+        <br></br>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.currSection == 'section2'}">
+     	<div class="top">
+        	If you have not had a preliminary inspection, please contact your local health department to request one. No license to operate will be granted without the proper Health permits.
+        	<br></br>
+        	If you have not had a preliminary inspection or plan review, please contact your local health department to request one.
+        	<br></br>
+        	<br></br>
+        </div>
+        1. Have you had a preliminary on-site inspection or plan review by your local health department?       
+    	<lightning:radioGroup name="p7s2q1"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p7s2q1value}"
+                          type="radio"/>
+        
+        <lightning:input type = "date" name="p7s2q2" label="If you have not had a preliminary on-site inspection by the local health department, what is the date of the preliminary inspection?" value="{!v.p7s1q1value}"/>
+        <br></br> 
+        2. Have you recieved the health department permit?       
+    	<lightning:radioGroup name="p7s2q3"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p7s2q3value}"
+                          type="radio"/>
+        <br></br>
+        If so, please attach a copy to this form.
+        <br></br>
+        <br></br>
+        3. What is the expiration date on your health department permit?
+        <br></br>
+        <lightning:input type = "date" name="p7s2q4" label="" value="{!v.p7s2q4value}"/>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.currSection == 'section3'}">
+            
+        If you have not obtained an Integrated Pest Management Plan packet, please call 304-558-2209 to request a packet.
+        <br></br>
+        <br></br>
+        1. Have you completed and returned your Integrated Pest Management Plan packet to the Department of Agriculture Pesticide Regulatory Program Supervisor?       
+    	<lightning:radioGroup name="p7s3q1"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p7s3q1value}"
+                          type="radio"/>
+        <br></br>
+        2. Have you recieved the Department of Agriculture Pesticide Regulatory Program Supervisor's approval letter?       
+    	<lightning:radioGroup name="p7s3q2"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p7s3q2value}"
+                          type="radio"/>
+        <br></br>
+        If so, please attach a copy to this form.
+        <br></br>
+        </aura:if>
+        <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">    	 
+        	<div class="slds-float_right">              
+            	<lightning:button value='seven' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+            	<lightning:button value='seven' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" />
+            	<lightning:button value='seven' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />        
+    		</div>
+        </aura:if>
+        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">    	
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='seven' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='seven' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" /> 
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='seven' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />            	
+        	</div>
+    	</aura:if>
+       		</div>
+	
+</aura:component>

@@ -1,0 +1,7 @@
+<aura:component >
+    <aura:attribute name="varchange" type= "string" default = "Naveen"/>
+    <aura:handler name="change" value = "{!v.varchange}" action = "{!c.valuechange}" />
+    
+    <lightning:button label="Change Value" variant="brand" value="Change Value" onclick = "{!c.changevalue}"/>
+	
+</aura:component>

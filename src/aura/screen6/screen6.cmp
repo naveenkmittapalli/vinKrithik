@@ -1,0 +1,70 @@
+<aura:component >
+	<!-- General Attributes -->
+    <aura:attribute name="yesNoOptions" type="List" default="[
+    {'label': 'Yes', 'value': 'Yes'},
+    {'label': 'No', 'value': 'No'}
+    ]"/>
+    
+    <!-- Page 6 Attributes -->
+    <aura:attribute name="p6q1value" type="String"/>
+    <aura:attribute name="p6q2value" type="String"/>
+    <aura:attribute name="p6q3value" type="String"/>
+    <aura:attribute name="p6q4value" type="String"/>
+    
+    <!-- Next Event Registration -->
+    <aura:registerEvent name="screen6NextEvent" type="c:screen6NextEvent"/>
+    
+    <div class="slds-clearfix">
+		<div class="slds-float_right">
+    		<lightning:button value='six' label='Back' variant = 'brand' onclick="{!c.processBack}" />
+  		</div>
+                <br></br>
+                <br></br>      
+		1. Have you Located a Property for your Proposed Program? 
+    	<lightning:radioGroup name="p6Q1"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p6q1value}"
+                          type="radio"/>
+        
+        <lightning:input name="p6q2" label="If so, give the address and describe the location from nearest major street or highway." value="{!v.p6q2value}"/>
+		<br></br>
+        <br></br>
+        2. If you are purchasing or leasing, was the building constructed prior to 1978? 
+    	<lightning:radioGroup name="p6Q3"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p6q3value}"
+                          type="radio"/>
+        If yes, you will need a lead risk assessment. For more information on lead risk assessment, please contact the Lead Program at (304) 558-2981.
+        <br></br>
+        <br></br>
+        3. Is the program is located in an area where special steps will need to be taken to ensure the children's safety?
+        <br></br>
+           (i.e the outdoor play area is next to a heavily trafficked street or next to a creek bed)?
+    	<lightning:radioGroup name="p6Q4"
+                          label=""
+                          options="{!v.yesNoOptions}"
+                          value="{!v.p6q4value}"
+                          type="radio"/>
+               
+        <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">    	 
+        	<div class="slds-float_right">              
+            	<lightning:button value='six' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+            	<lightning:button value='six' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" />
+            	<lightning:button value='six' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />        
+    		</div>
+        </aura:if>
+        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">    	
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='six' label='Save and Exit' variant = 'brand' onclick="{!c.processSave}" />  
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='six' label='Cancel' variant = 'brand' onclick="{!c.processCancel}" /> 
+        	</div>
+        	<div class="slds-align_absolute-center" style="height:3rem">
+            	<lightning:button value='six' label='Save and Continue' variant = 'brand' onclick="{!c.processSave}" />            	
+        	</div>
+    	</aura:if>
+       		</div>
+</aura:component>

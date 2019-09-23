@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <lightning:button label="New Business" title="New Business" onclick="{! c.newBusiness }"/>
+	<lightning:button label="Existing Business" title="Existing Business" onclick="{! c.existingBusiness }"/>
+    
+    <aura:attribute name = "newBusiness" type="boolean" default="false" />
+    <aura:attribute name = "existingBusiness" type="boolean" default="false" />
+    
+    <aura:if isTrue="{!v.newBusiness}">
+       
+    </aura:if>    
+    
+    <aura:if isTrue="{!v.existingBusiness}">
+    
+    </aura:if>
+    
+</aura:component>

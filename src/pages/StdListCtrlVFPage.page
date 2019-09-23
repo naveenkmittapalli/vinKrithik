@@ -1,0 +1,19 @@
+<apex:page standardController="Account" recordSetVar="XYZ">
+<apex:form >
+    <apex:pageBlock title="List of Accounts1" >
+    	<apex:pageBlockTable value="{!XYZ}" var="A" rows="10">
+            <apex:column headerValue="Acc Name" >                
+                <!-- <apex:inputField value="{!A.Name}"/>  -->
+                <apex:outputField value="{!A.Name}" >
+                	<apex:inlineEditSupport />
+                </apex:outputField>
+            </apex:column>
+            <apex:column title="Industry" value="{!A.Industry}" />  
+            <apex:column title="Phone" value="{!A.Phone}"/>
+            <!-- <apex:inlineEditSupport /> -->
+        </apex:pageBlockTable>   
+    </apex:pageBlock>
+    <apex:commandButton value="Save" action="{!Save}"/>
+    <apex:commandButton value="Next" action="{!next}"/>
+    </apex:form>
+</apex:page>

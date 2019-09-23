@@ -1,0 +1,26 @@
+<aura:component >
+    
+    <aura:method name="childmethod" action="{!c.childmethodaction}" access="public">
+        <aura:attribute name = "param1" type = "string" />
+        <aura:attribute name = "param2" type = "zip"  />      
+    </aura:method>
+    <aura:attribute name = "State" type = "string" default = "Pennsylvania"/>
+    <aura:attribute name = "Zip" type = "string"  default = "17110"/> 
+    
+    
+    <aura:attribute name="parentaction" type="Aura.Action" />
+    <lightning:button label="Calling Parent Action From Child" value="Calling Parent Action From Child" onclick="{!v.parentaction}" />
+    <br></br>
+    <br></br>
+    <lightning:button label="Passing Value from Button to Controller"
+                      value="Passing Value from Button to Controller" 
+                      onclick="{!c.passvalue}" 
+                      name='I AM NAVEEN'/>
+    <br></br>
+    <br></br>
+    State is {!v.State} <br></br>
+    Zip is {!v.Zip} <br></br>
+    
+    
+	
+</aura:component>
